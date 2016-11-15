@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+<link rel="stylesheet" type="text/css" href="styles/custom/custom.css" />
+<link rel="stylesheet" type="text/css"
+	href="styles/bootstrap/css/bootstrap.css" />
+</head>
+<body id="idForBackground">
+	<ui:include src="/header.xhtml"></ui:include>
+	<div id="registerContainer">
+		<h:form>
+			<br/>
+			<h:outputLabel for="email" value="E-Mail: " />
+			<h:inputText id="email" value="#{userController.user.email}"
+				required="true" requiredMessage="Bitte E-Mail eingeben">
+			</h:inputText>
+			<br/>
+			<h:outputLabel for="username" value="Username: " />
+			<h:inputText id="username" value="#{userController.user.username}"
+				required="true" requiredMessage="Bitte Benutzername eingeben">
+			</h:inputText>
+			<br/>
+			<h:message for="password" style="color: red;" />
+			<h:outputLabel for="password" value="Passwort: " />
+			<h:inputSecret id="password" value="#{userController.user.password}"
+				required="true" requiredMessage="Bitte Passwort eingeben">
+			</h:inputSecret>
+			<br/>
+			<h:message for="password" style="color: red;" />
+			<h:commandButton action="#{userController.register()}"
+				value="Registrieren" />
+		</h:form>
+	</div>
+</body>
+</html>

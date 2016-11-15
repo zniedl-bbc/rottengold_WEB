@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<div id="headerDiv">
+		<img src="img/logo.png" style="width: 300px;height:75px;"/>
+		<div id="login">
+			<h:form>
+				<h:commandButton action="#{userController.switchToLogin()}"
+					value="Login" />
+			</h:form>
+		</div>
+		<div id="signUp"> 
+			<h:form>
+				<h:commandButton action="#{userController.switchToSignUp()}"
+					value="Sign up" />
+			</h:form>
+		</div> 
+	</div>
+</ui:composition>
