@@ -5,11 +5,10 @@
 
 	<h:dataTable value="#{commentController.comments}" var="c">
 		<h:column>
-			<f:facet name="header">Test</f:facet>
 			<h:outputText value="#{c.title}"></h:outputText>
 		</h:column>
 		<h:column>
-    		#{c.comment}
+    		<h:outputText value="#{c.comment}"></h:outputText>
     	</h:column>
 	</h:dataTable>
 </ui:composition>

@@ -23,3 +23,9 @@
 	float: right;
 	margin-right: 40%;
 }
+#searchMenu{
+	float: left;
+	border-style: solid;
+	padding-left: 100px;
+	padding-right: 100px;
+}

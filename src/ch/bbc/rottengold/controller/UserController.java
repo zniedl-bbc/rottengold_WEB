@@ -23,7 +23,7 @@ public class UserController implements Serializable {
 	User user;
 	
 	@EJB
-	UserBeanLocal userbean;
+	UserBeanLocal userBean;
 	
 	public String switchToSignUp() {
 		return "/signUp";
@@ -34,7 +34,7 @@ public class UserController implements Serializable {
 	}
 	
 	public String register(){
-		return userbean.registerUser(user);
+		return userBean.registerUser(user);
 	}
 	public String login(){
 		List<User> tempUser = userbean.checkLogin(user);

@@ -18,7 +18,7 @@ public class CommentController implements Serializable {
 	private static final long serialVersionUID = -2587101126657460690L;
 
 	@EJB
-	private CommentBeanLocal commentLister;
+	private CommentBeanLocal commentBean;
 
 	private Collection<Comment> comments;
 
@@ -28,7 +28,7 @@ public class CommentController implements Serializable {
 	}
 
 	private Collection<Comment> getCommentsViaWebsite() {
-		return (Collection<Comment>) commentLister.getCommentsViaWebsite(getWebsiteFromSession());
+		return (Collection<Comment>) commentBean.getCommentsViaWebsite(getWebsiteFromSession());
 	}
 
 	private int getWebsiteFromSession() {
