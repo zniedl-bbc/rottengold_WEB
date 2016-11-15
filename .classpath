@@ -8,8 +8,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/RottenGold_EJB"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="/RottenGold_JPA"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/rottengold_EJB"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/rottengold_JPA"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
