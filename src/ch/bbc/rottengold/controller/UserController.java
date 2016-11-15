@@ -1,11 +1,14 @@
 package ch.bbc.rottengold.controller;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import ch.bbc.rottengold.ejb.UserBeanLocal;
 import ch.bbc.rottengold.model.User;
@@ -33,7 +36,17 @@ public class UserController implements Serializable {
 	public String register(){
 		return userbean.registerUser(user);
 	}
+	public String login(){
+		List<User> tempUser = userbean.checkLogin(user);
+		creatSession(tempUser.get(0));
+		return "/home";
+	}
 	
+	private void creatSession(User user) {
+		user.setCreatedAt(new Date());
+		
+	}
+
 	public User getUser() {
 		return user;
 	}

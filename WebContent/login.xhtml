@@ -9,7 +9,24 @@
 </head>
 <body id="idForBackground">
 	<ui:include src="/header.xhtml"></ui:include>
-		
+		<h:form>
+		<br/>
+		<h:outputLabel for="username" value="Username " />
+		<h:inputText id="username" value="#{userController.user.username}"
+			required="true" requiredMessage="PLease enter your username">
+		</h:inputText>
+		<br/>
+		<h:message for="password" style="color: red;" />
+		<h:outputLabel for="password" value="Passwort: " />
+		<h:inputSecret id="password"
+			value="#{userController.user.password}" required="true"
+			requiredMessage="Please enter your password">
+		</h:inputSecret>
+		<br/>
+		<h:message for="password" style="color: red;" />
+		<h:commandButton action="#{userController.login()}"
+			value="Login" />
+	</h:form>
     
 </body>
 </html>
