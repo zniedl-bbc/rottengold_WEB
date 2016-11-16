@@ -1,14 +1,11 @@
 package ch.bbc.rottengold.controller;
 
-import java.util.ArrayList;
-
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import ch.bbc.rottengold.ejb.SearchBeanLocal;
-import ch.bbc.rottengold.ejb.UserBeanLocal;
 import ch.bbc.rottengold.model.Website;
 
 @Named
@@ -31,7 +28,7 @@ public class SearchController {
 	public Website[] getSearchResults() {
 		if (searchResults == null){
 			searchResults = new Website[1];
-			searchResults[0] = new Website();
+			searchResults[0] = new Website("","");
 		}
 		return searchResults;
 	}
