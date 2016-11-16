@@ -2,14 +2,12 @@ package ch.bbc.rottengold.controller;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.HttpSession;
 
 import ch.bbc.rottengold.ejb.UserBeanLocal;
 import ch.bbc.rottengold.model.User;
@@ -49,10 +47,12 @@ public class UserController implements Serializable {
 		}
 		return "/home";
 	}
+
 	public String logout(){
 		setUserLoggedIn(false);
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "";
+
 	}
 
 	public User getUser() {

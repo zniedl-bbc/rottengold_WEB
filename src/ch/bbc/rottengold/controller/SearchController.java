@@ -15,21 +15,22 @@ public class SearchController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	String searchInput;
-	
+	private String searchInput;
+
 	@EJB
-	SearchBeanLocal searchBean;
-	
-	Website[] searchResults;
+	private SearchBeanLocal searchBean;
+
+	private Website[] searchResults;
+
 	public String searchWebsite() {
 		searchResults = searchBean.searchWebsite(searchInput);
 		return "/mainFrame";
 	}
 
 	public Website[] getSearchResults() {
-		if (searchResults == null){
+		if (searchResults == null) {
 			searchResults = new Website[1];
-			searchResults[0] = new Website("","");
+			searchResults[0] = new Website("", "");
 		}
 		return searchResults;
 	}
@@ -37,4 +38,13 @@ public class SearchController implements Serializable {
 	public void setSearchResults(Website[] searchResults) {
 		this.searchResults = searchResults;
 	}
+
+	public String getSearchInput() {
+		return searchInput;
+	}
+
+	public void setSearchInput(String searchInput) {
+		this.searchInput = searchInput;
+	}
+
 }
