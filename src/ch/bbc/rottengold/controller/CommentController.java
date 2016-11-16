@@ -27,14 +27,14 @@ public class CommentController implements Serializable {
 	private List<Comment> comments;
 
 	private Comment defaultComment = new Comment("Default", "This is the default comment");
-	
+
 	private List<Comment> listForDefaultComment;
 
 	private Website website;
 
 	@PostConstruct
 	public void init() {
-//		setComments(getCommentsViaWebsite());
+		setComments(getCommentsViaWebsite());
 	}
 
 	private List<Comment> getCommentsViaWebsite() {

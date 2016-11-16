@@ -30,7 +30,7 @@ public class SearchController implements Serializable {
 	public Website[] getSearchResults() {
 		if (searchResults == null) {
 			searchResults = new Website[1];
-			searchResults[0] = new Website("", "");
+			searchResults[0] = new Website("", "", "");
 		}
 		return searchResults;
 	}
