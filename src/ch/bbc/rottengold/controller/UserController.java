@@ -42,7 +42,7 @@ public class UserController implements Serializable {
 	}
 	
 	private void creatSession(User user) {
-		user.setCreatedAt(new Date());
+		//user.setCreatedAt(new Date());
 		
 	}
 
