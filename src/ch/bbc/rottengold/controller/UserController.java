@@ -37,7 +37,7 @@ public class UserController implements Serializable {
 		return userBean.registerUser(user);
 	}
 	public String login(){
-		List<User> tempUser = userbean.checkLogin(user);
+		List<User> tempUser = userBean.checkLogin(user);
 		creatSession(tempUser.get(0));
 		return "/home";
 	}
