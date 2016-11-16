@@ -90,4 +90,22 @@
 	color: red;
 	text-decoration: inherit;
 }
-
+.discription{
+	width: 350px;
+}
+#websiteForm{
+	margin-left: 40%;
+	width: auto;
+}
+.textForAddWebsite{
+	text-align: center;
+}
+.testID{
+	width: 350px;
+	margin-bottom: 25px;
+}
+#submitButtonContainer{
+	width: auto;
+	float: rigth;
+	margin-top: 10px;
+}

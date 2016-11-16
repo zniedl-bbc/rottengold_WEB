@@ -21,6 +21,10 @@ public class SearchController implements Serializable {
 	private SearchBeanLocal searchBean;
 
 	private Website[] searchResults;
+	
+	public String switchToAddWebsite(){
+		return "/addWebsite";
+	}
 
 	public String searchWebsite() {
 		searchResults = searchBean.searchWebsite(searchInput);

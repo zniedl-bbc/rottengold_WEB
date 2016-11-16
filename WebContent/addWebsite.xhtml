@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+<link rel="stylesheet" type="text/css" href="styles/custom/custom.css" />
+<link rel="stylesheet" type="text/css"
+	href="styles/bootstrap/css/bootstrap.css" />
+</head>
+<body class="idForBackground">
+	<ui:include src="/header.xhtml" />
+
+	<div id="websiteForm">
+		<br/>
+			<h:form>
+			<h:outputLabel class ="textForAddWebsite" value="URL:           " />
+			<br/>
+			<h:inputText class="testID" value="#{userController.user.email}"
+				required="true" requiredMessage="Pleas enter a URL" >
+			</h:inputText>
+			<br/>
+			<h:outputLabel class ="textForAddWebsite" value="Website name:  " />
+			<br/>
+			<h:inputText class="testID" value="#{userController.user.username}"
+				required="true" requiredMessage="Pleas enter the name of the website">
+			</h:inputText>
+			<br/>
+			<h:outputLabel class ="textForAddWebsite" value="Discription:   " />
+			<br/>
+			<h:inputTextarea class="discription" value="#{userController.user.password}"
+				required="true" requiredMessage="PLeas enter a discripton">
+			</h:inputTextarea>
+			<br/>
+			<div id="submitButtonContainer">
+			<h:commandButton class="submitButton"  action="#{userController.register()}"
+				value="Submit" />
+			</div>
+		</h:form>
+	</div>
+</body>
+
+</html>

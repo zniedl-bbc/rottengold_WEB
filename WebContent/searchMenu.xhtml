@@ -4,6 +4,11 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<div id="searchMenu">
 		<h:form>
+			<div id="addWebsiteButton">
+				<h:commandButton rendered="#{userController.userLoggedIn}" value="Add Website" action="#{searchController.switchToAddWebsite}"/>
+			</div>
+		</h:form>
+		<h:form>
 			<div id="searchInput">
 				<h:inputText value="#{searchController.searchInput}" />
 			</div>
