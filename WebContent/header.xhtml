@@ -6,8 +6,10 @@
 		<img src="img/logo.png" style="width: 300px;height:75px;" href="/home"/>
 		<div id="login">
 			<h:form>
-				<h:commandButton action="#{userController.switchToLogin()}"
+				<h:commandButton rendered="#{not userController.userLoggedIn}" action="#{userController.switchToLogin()}"
 					value="Login" />
+				<h:commandButton rendered="#{userController.userLoggedIn}" action="#{userController.logout()}"
+					value="Logout" />
 			</h:form>
 		</div>
 		<div id="signUp"> 

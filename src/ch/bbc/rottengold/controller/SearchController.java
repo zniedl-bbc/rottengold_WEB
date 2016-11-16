@@ -1,8 +1,9 @@
 package ch.bbc.rottengold.controller;
 
+import java.io.Serializable;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 import ch.bbc.rottengold.ejb.SearchBeanLocal;
@@ -10,16 +11,16 @@ import ch.bbc.rottengold.model.Website;
 
 @Named
 @SessionScoped
-public class SearchController {
+public class SearchController implements Serializable {
 
-	@Inject
+	private static final long serialVersionUID = 1L;
+
 	String searchInput;
 	
 	@EJB
 	SearchBeanLocal searchBean;
 	
 	Website[] searchResults;
-
 	public String searchWebsite() {
 		searchResults = searchBean.searchWebsite(searchInput);
 		return "/mainFrame";
