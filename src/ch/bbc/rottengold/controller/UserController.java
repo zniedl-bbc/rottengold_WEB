@@ -23,8 +23,9 @@ public class UserController implements Serializable {
 
 	@EJB
 	UserBeanLocal userBean;
-
+	//flag's
 	private boolean userLoggedIn = false;
+	private boolean usedUsername = false;
 
 	public String switchToSignUp() {
 		return "/signUp";
@@ -39,7 +40,14 @@ public class UserController implements Serializable {
 	}
 
 	public String register() {
-		return userBean.registerUser(user);
+		int result = userBean.registerUser(user);
+		if(result == 0){
+			setUsedUsername(false);
+			return "/mainFrame";
+		}else{
+			setUsedUsername(true);
+			return "/signUp";
+		}
 	}
 
 	public String login() {
@@ -71,12 +79,17 @@ public class UserController implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+	//Flag getters and setters
 	public boolean isUserLoggedIn() {
 		return userLoggedIn;
 	}
-
 	public void setUserLoggedIn(boolean userLoggedIn) {
 		this.userLoggedIn = userLoggedIn;
+	}
+	public boolean isUsedUsername() {
+		return usedUsername;
+	}
+	public void setUsedUsername(boolean usedUsername) {
+		this.usedUsername = usedUsername;
 	}
 }
