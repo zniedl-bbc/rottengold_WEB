@@ -5,13 +5,22 @@
 
 	<div class="websiteInfo">
 		<div class="rating">
-			<h:outputText value="#{websiteInfoController.rating}"></h:outputText>
+			<h:outputText value="Rating Placeholder"></h:outputText>
+			<!-- "#{websiteInfoController.rating}" -->
 		</div>
-		<div class="websiteTitle">
-			<h:outputText value="#{websiteInfoController.websiteTitle}"></h:outputText>
+		<div class="titleAndDescription">
+			<div class="websiteTitle">
+				<h:outputText value="#{websiteInfoController.currentWebsite.name}"></h:outputText>
+			</div>
+			<div class="websiteDescription">
+				<h:outputText
+					value="#{websiteInfoController.currentWebsite.description}"></h:outputText>
+			</div>
 		</div>
-		<div class="websiteLink">
-			<h:outputText value="#{websiteInfoController.websiteURL}"></h:outputText>
+		<div class="websiteUrl">
+			<h:outputLink value="#{websiteInfoController.currentWebsite.url}">
+				<h:outputText value="Go To Website" />
+			</h:outputLink>
 		</div>
 	</div>
 </ui:composition>

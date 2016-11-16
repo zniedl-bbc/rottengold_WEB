@@ -58,15 +58,9 @@
 	color: black;
 	font-style: italic;
 }
-.websiteInfo{
-	border:solid;
-	float:left;
-	margin: 15px 100px 0 20px;
-}
 
-
-.comment{
-	border:solid;
+.comment {
+	border: solid;
 	border-color: black;
 	float: left;
 	margin: 15px 0 0 20px;
@@ -86,10 +80,12 @@
 	margin-left: 25px;
 	float: left;
 }
-.errorText{
+
+.errorText {
 	color: red;
 	text-decoration: inherit;
 }
+
 .discription{
 	width: 350px;
 }
@@ -100,7 +96,8 @@
 .textForAddWebsite{
 	text-align: center;
 }
-.testID{
+<!-- rename !!! -->
+.testID{ 
 	width: 350px;
 	margin-bottom: 25px;
 }
@@ -109,3 +106,35 @@
 	float: rigth;
 	margin-top: 10px;
 }
+
+
+.websiteInfo {
+	border: solid;
+	float: left;
+	margin: 15px 200px 0 20px;
+	display: table;
+}
+
+.titleAndDescription {
+	display: table-cell;
+}
+
+.rating {
+	display: table-cell;
+	padding: 50px 100px 0 20px
+}
+
+.websiteTitle {
+	font-size: 30px;
+	padding: 50px 100px 0 50px
+}
+
+.websiteDescription {
+	padding: 50px 10px 0 50px
+}
+
+.websiteUrl {
+	display: table-cell;
+	padding: 50px 20px 0 50px;
+}
+
