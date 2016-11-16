@@ -33,6 +33,10 @@ public class UserController implements Serializable {
 	public String switchToLogin() {
 		return "/login";
 	}
+	
+	public String switchToAccount(){
+		return "/account";
+	}
 
 	public String register() {
 		return userBean.registerUser(user);
@@ -44,8 +48,9 @@ public class UserController implements Serializable {
 			setUserLoggedIn(false);
 		} else {
 			setUserLoggedIn(true);
+			return "/mainFrame";
 		}
-		return "/home";
+		return "";
 	}
 
 	public String logout(){
@@ -53,6 +58,10 @@ public class UserController implements Serializable {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "";
 
+	}
+	public String deleteAccount(){
+		userBean.deleteAccount(user);
+		return "/mainFrame";
 	}
 
 	public User getUser() {
