@@ -32,6 +32,8 @@
 			<h:commandButton action="#{userController.register()}"
 				value="Registrieren" />
 		</h:form>
+		<br/>
+		<h:outputText rendered="#{userController.usedUsername}" class = "errorText" value="This username is already used"></h:outputText>
 	</div>
 </body>
 </html>

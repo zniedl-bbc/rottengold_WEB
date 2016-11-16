@@ -29,7 +29,7 @@ public class CommentController implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		setComments(getCommentsViaWebsite());
+//		setComments(getCommentsViaWebsite());
 	}
 
 	private List<Comment> getCommentsViaWebsite() {
