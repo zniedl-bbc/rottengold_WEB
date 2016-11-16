@@ -8,7 +8,6 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.HttpSession;
 
 import ch.bbc.rottengold.ejb.UserBeanLocal;
 import ch.bbc.rottengold.model.User;
