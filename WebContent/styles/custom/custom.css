@@ -1,29 +1,34 @@
 @CHARSET "UTF-8";
 
-.idForBackground{
+.idForBackground {
 	background-color: beige;
 }
-#headerDiv{
+
+#headerDiv {
 	background-color: black;
 	margin-top: 10px;
 	margin-right: 25px;
 	margin-left: 25px;
 }
-#login{
+
+#login {
 	float: right;
 	margin-top: 25px;
 	margin-right: 15px;
 }
-#signUp{
+
+#signUp {
 	float: right;
 	margin-top: 25px;
 	margin-right: 15px;
 }
-#registerContainer{
+
+#registerContainer {
 	float: right;
 	margin-right: 40%;
 }
-#searchMenu{
+
+#searchMenu {
 	float: left;
 	border-style: solid;
 	margin-top: 15px;
@@ -32,24 +37,53 @@
 	padding-right: 70px;
 	padding-bottom: 700px
 }
-#searchButton{
-	padding-top:10px;
-	margin-left:-30px
+
+#searchButton {
+	padding-top: 10px;
+	margin-left: -30px
 }
-#searchInput{
-	padding-top:20px;
-	margin-left:-30px
+
+#searchInput {
+	padding-top: 20px;
+	margin-left: -30px
 }
-#searchResults{
+
+#searchResults {
 	margin-left: -30px;
 	margin-top: 20px;
 }
-#searchResultRow{
+
+.searchResultRow {
 	font-size: 15px;
 	color: black;
 	font-style: italic;
-	border: solid;
-	border-color: black;
+}
+.websiteInfo{
+	border:solid;
+	float:left;
+	margin: 15px 100px 0 20px;
 }
 
+
+.comment{
+	border:solid;
+	border-color: black;
+	float: left;
+	margin: 15px 0 0 20px;
+	padding: 0 500px 0 auto;
+}
+
+.commentTitle {
+	font-size: 30px;
+	margin: 15px 0 0 25px;
+	padding: 5px;
+	float: left;
+}
+
+.commentText {
+	font-size: 10px;
+	padding: 5px;
+	margin-left: 25px;
+	float: left;
+}
 

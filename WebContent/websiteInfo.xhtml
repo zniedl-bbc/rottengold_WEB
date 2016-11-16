@@ -1,0 +1,17 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<div class="websiteInfo">
+		<div class="rating">
+			<h:outputText value="#{websiteInfoController.rating}"></h:outputText>
+		</div>
+		<div class="websiteTitle">
+			<h:outputText value="#{websiteInfoController.websiteTitle}"></h:outputText>
+		</div>
+		<div class="websiteLink">
+			<h:outputText value="#{websiteInfoController.websiteURL}"></h:outputText>
+		</div>
+	</div>
+</ui:composition>

@@ -3,12 +3,11 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-	<h:dataTable value="#{commentController.comments}" var="c">
-		<h:column>
-			<h:outputText value="#{c.title}"></h:outputText>
-		</h:column>
-		<h:column>
-    		<h:outputText value="#{c.comment}"></h:outputText>
-    	</h:column>
-	</h:dataTable>
+	<ui:repeat value="#{commentController.comments}" var="c">
+		<div class="comment">
+			<h:outputText value="#{c.title}" class="commentTitle"></h:outputText>
+			<br /> <br /> <br /> <br />
+			<h:outputText value="#{c.comment}" class="commentText"></h:outputText>
+		</div>
+	</ui:repeat>
 </ui:composition>
