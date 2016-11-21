@@ -28,23 +28,16 @@ public class WebsiteInfoController implements Serializable {
 
 	private Rating rating;
 
-	@PostConstruct
-	public void init() {
-		setCurrentWebsite();
-	}
-
-	private void setCurrentWebsite() {
+	public void setCurrentWebsiteFromId() {
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();
-		try {
-			currentWebsite = websiteInfoBean.getWebsiteInfo((int) request.getAttribute("id"));
-		} catch (NullPointerException exception) {
-			currentWebsite = new Website("Default", "http://localhost:8080/RottenGold_WEB/faces/mainFrame.xhtml",
-					"This is our Website");
-		}
+		String idURLParam = request.getParameter("id");
+		currentWebsite = websiteInfoBean.getWebsiteInfo(idURLParam);
+
 	}
 
 	public Website getCurrentWebsite() {
+		setCurrentWebsiteFromId();
 		return currentWebsite;
 	}
 

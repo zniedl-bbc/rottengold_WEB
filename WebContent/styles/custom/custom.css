@@ -111,7 +111,7 @@
 .websiteInfo {
 	border: solid;
 	float: left;
-	margin: 15px 200px 0 20px;
+	margin: 15px 30% 0 20px;
 	display: table;
 }
 
@@ -121,16 +121,16 @@
 
 .rating {
 	display: table-cell;
-	padding: 50px 100px 0 20px
+	padding: 50px 100px 0 20px;
 }
 
 .websiteTitle {
 	font-size: 30px;
-	padding: 50px 100px 0 50px
+	padding: 50px 100px 0 50px;
 }
 
 .websiteDescription {
-	padding: 50px 10px 0 50px
+	padding: 50px 10px 10px 50px;
 }
 
 .websiteUrl {

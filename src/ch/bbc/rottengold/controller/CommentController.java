@@ -2,6 +2,7 @@ package ch.bbc.rottengold.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -24,36 +25,24 @@ public class CommentController implements Serializable {
 	@EJB
 	private CommentBeanLocal commentBean;
 
-	private List<Comment> comments;
-
-	private Comment defaultComment = new Comment("Default", "This is the default comment");
-
-	private List<Comment> listForDefaultComment;
+	private Comment[] comments;
 
 	private Website website;
 
-	@PostConstruct
-	public void init() {
-		setComments(getCommentsViaWebsite());
-	}
 
-	private List<Comment> getCommentsViaWebsite() {
+	private void setCommentsViaWebsiteId() {
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
-				.getRequest();
-		if (request.getAttribute("id") != null) {
-			return commentBean.getCommentsViaWebsite((int) request.getAttribute("id"));
-		} else {
-			listForDefaultComment = new ArrayList<Comment>(1);
-			listForDefaultComment.add(defaultComment);
-			return listForDefaultComment;
-		}
+				.getRequest(); 
+		String idURLParam = request.getParameter("id");
+		comments = commentBean.getCommentsViaWebsite(idURLParam);
 	}
 
-	public List<Comment> getComments() {
+	public Comment[] getComments() {
+		setCommentsViaWebsiteId();
 		return comments;
 	}
 
-	public void setComments(List<Comment> comments) {
+	public void setComments(Comment[] comments) {
 		this.comments = comments;
 	}
 
