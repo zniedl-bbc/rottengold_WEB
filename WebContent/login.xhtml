@@ -9,9 +9,10 @@
 </head>
 <body class="idForBackground">
 	<ui:include src="/header.xhtml"></ui:include>
+	<div id="registerContainer">
 		<h:form>
 		<br/>
-		<h:outputLabel for="username" value="Username " />
+		<h:outputLabel for="username" value="Username:" />
 		<h:inputText id="username" value="#{userController.user.username}"
 			required="true" requiredMessage="PLease enter your username">
 		</h:inputText>
@@ -27,6 +28,6 @@
 		<h:commandButton action="#{userController.login()}"
 			value="Login" />
 	</h:form>
-    
+	</div>
 </body>
 </html>

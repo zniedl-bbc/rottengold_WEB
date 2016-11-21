@@ -12,18 +12,18 @@
 	<div id="registerContainer">
 		<h:form>
 			<br/>
-			<h:outputLabel for="email" value="E-Mail: " />
+			<h:outputLabel class="FormulaText" for="email" value="E-Mail: " />
 			<h:inputText id="email" value="#{userController.user.email}"
 				required="true" requiredMessage="Bitte E-Mail eingeben">
 			</h:inputText>
 			<br/>
-			<h:outputLabel for="username" value="Username: " />
+			<h:outputLabel class="FormulaText" for="username" value="Username: " />
 			<h:inputText id="username" value="#{userController.user.username}"
 				required="true" requiredMessage="Bitte Benutzername eingeben">
 			</h:inputText>
 			<br/>
 			<h:message for="password" style="color: red;" />
-			<h:outputLabel for="password" value="Passwort: " />
+			<h:outputLabel class="FormulaText" for="password" value="Passwort: " />
 			<h:inputSecret id="password" value="#{userController.user.password}"
 				required="true" requiredMessage="Bitte Passwort eingeben">
 			</h:inputSecret>
