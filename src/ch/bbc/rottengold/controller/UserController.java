@@ -56,6 +56,7 @@ public class UserController implements Serializable {
 			setUserLoggedIn(false);
 		} else {
 			setUserLoggedIn(true);
+			setUser(tempUser.get(0));
 			return "/mainFrame";
 		}
 		return "";
