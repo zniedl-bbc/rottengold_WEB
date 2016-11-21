@@ -19,10 +19,10 @@ public class UserController implements Serializable {
 	private static final long serialVersionUID = 4401133314893714110L;
 
 	@Inject
-	User user;
+	private User user;
 
 	@EJB
-	UserBeanLocal userBean;
+	private UserBeanLocal userBean;
 	//flag's
 	private boolean userLoggedIn = false;
 	private boolean usedUsername = false;
@@ -93,4 +93,5 @@ public class UserController implements Serializable {
 	public void setUsedUsername(boolean usedUsername) {
 		this.usedUsername = usedUsername;
 	}
+
 }

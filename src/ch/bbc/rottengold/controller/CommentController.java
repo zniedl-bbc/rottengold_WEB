@@ -1,14 +1,11 @@
 package ch.bbc.rottengold.controller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,17 +21,51 @@ public class CommentController implements Serializable {
 
 	@EJB
 	private CommentBeanLocal commentBean;
+	
+	@Inject
+	private UserController userController;
+	
+    private int websiteId;
+    
+	public int getWebsiteId() {
+		return websiteId;
+	}
+
+	public void setWebsiteId(int websiteId) {
+		this.websiteId = websiteId;
+	}
+
+	public UserController getUserController() {
+		return userController;
+	}
+
+	public void setUserController(UserController userController) {
+		this.userController = userController;
+	}
 
 	private Comment[] comments;
 
-	private Website website;
+	@Inject
+	private Comment newComment;
 
+	private Website website;
 
 	private void setCommentsViaWebsiteId() {
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
-				.getRequest(); 
+				.getRequest();
 		String idURLParam = request.getParameter("id");
+		if(idURLParam != null) {
+			setWebsiteId(Integer.parseInt(idURLParam));
+		}
 		comments = commentBean.getCommentsViaWebsite(idURLParam);
+	}
+
+	public String addNewComment() {
+		newComment.setId_website(getWebsiteId());
+		newComment.setId_user(getUserController().getUser().getId());
+		commentBean.addComment(newComment);
+		return "";
+
 	}
 
 	public Comment[] getComments() {
@@ -52,6 +83,14 @@ public class CommentController implements Serializable {
 
 	public void setWebsite(Website website) {
 		this.website = website;
+	}
+
+	public Comment getNewComment() {
+		return newComment;
+	}
+
+	public void setNewComment(Comment newComment) {
+		this.newComment = newComment;
 	}
 
 }
