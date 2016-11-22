@@ -9,10 +9,30 @@
 </head>
 <body class="idForBackground">
 	<ui:include src="/header.xhtml" />
-	<h:form>
-		<h:commandButton action="#{userController.deleteAccount()}"
+		<div id="fieldContainer">
+		<h:form>
+			<br/>
+			<h:outputLabel class="FormulaText" for="email" value="ID:" />
+			<h:outputLabel  class="ResultText" for="email" value="#{userController.user.getIdAsString()}" />
+			<br/>
+			<h:outputLabel class="FormulaText" for="email" value="E-Mail: " />
+			<h:outputLabel rendered="#{not userController.edditing}" class="ResultText" for="email" value="#{userController.user.getEmail()}" />
+			<br/>
+			<h:outputLabel class="FormulaText" for="username" value="Username: " />	
+			<h:outputLabel rendered="#{not userController.edditing}" class="ResultText" for="email" value="#{userController.user.getUsername()}" />		
+			<br/>
+			<h:outputLabel class="FormulaText" for="password" value="Passwort: " />
+			<h:outputLabel rendered="#{not userController.edditing}" class="ResultText" for="email" value="#{userController.user.getPassword()}" />
+			<br/>
+			<br/>
+			<br/>
+			<h:commandButton action="#{userController.switchToEditAccount()}"
+			value="Edit account" />
+			
+		<h:commandButton class="ResultText" action="#{userController.deleteAccount()}"
 			value="Delete account" />
 	</h:form>
-</body>
+	</div>
+	</body>
 
 </html>

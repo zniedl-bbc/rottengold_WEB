@@ -26,8 +26,10 @@ public class UserController implements Serializable {
 	//flag's
 	private boolean userLoggedIn = false;
 	private boolean usedUsername = false;
+	private boolean edditing = false;
 
 	public String switchToSignUp() {
+		setEdditing(true);
 		return "/signUp";
 	}
 
@@ -36,6 +38,10 @@ public class UserController implements Serializable {
 	}
 	
 	public String switchToAccount(){
+		return "/account";
+	}
+	public String switchToEditAccount(){
+		
 		return "/account";
 	}
 
@@ -92,6 +98,12 @@ public class UserController implements Serializable {
 	}
 	public void setUsedUsername(boolean usedUsername) {
 		this.usedUsername = usedUsername;
+	}
+	public boolean isEdditing() {
+		return edditing;
+	}
+	public void setEdditing(boolean edditing) {
+		this.edditing = edditing;
 	}
 
 }
