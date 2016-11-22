@@ -6,14 +6,17 @@
 	<div id="addComment">
 		<h:form>
 			<h:outputText value="Add new Comment here" />
+			<br />
 			<h:inputText id="commentTitleInput"
 				value="#{commentController.newComment.title}" required="true"></h:inputText>
+			<br />
 			<h:inputTextarea id="commentInput"
-				value="#{commentController.newComment.comment}" rows="10" cols="20"
+				value="#{commentController.newComment.comment}" rows="12" cols="50"
 				required="true"></h:inputTextarea>
+			<br />
 			<h:commandButton action="#{commentController.addNewComment}"
 				value="Add Comment">
-				<f:param name="id" value="#{commentController.newComment.id_website}" />
+				<f:param name="id" value="#{commentController.websiteId}" />
 			</h:commandButton>
 		</h:form>
 	</div>

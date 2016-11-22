@@ -31,10 +31,12 @@
 .resultText{
 	float: right;
 }
-.FormulaText{
 
+.FormulaText {
+	padding-right: 30px;
 }
-#addWebsitebutton{
+
+#addWebsitebutton {
 	float: right;
 }
 
@@ -50,7 +52,10 @@
 	margin-left: 25px;
 	padding-left: 100px;
 	padding-right: 70px;
-	padding-bottom: 700px
+	padding-bottom: 640px;
+	padding-left: 100px;
+	position: fixed;
+	background-color: white;
 }
 
 #searchButton {
@@ -80,6 +85,7 @@
 	float: left;
 	margin: 15px 0 0 20px;
 	padding: 0 500px 0 auto;
+	width: 380px;
 }
 
 .commentTitle {
@@ -96,37 +102,50 @@
 	float: left;
 }
 
+.commentButtonsContainer {
+	float: right;
+	width: 146px;
+}
+
+.commentButtons {
+	width: 147px;
+	padding: 1 6 1 6;
+}
+
 .errorText {
 	color: red;
 	text-decoration: inherit;
 }
 
-.discription{
+.discription {
 	width: 350px;
 }
-#websiteForm{
+
+#websiteForm {
 	margin-left: 40%;
 	width: auto;
 }
-.textForAddWebsite{
+
+.textForAddWebsite {
 	text-align: center;
 }
-<!-- rename !!! -->
-.testID{ 
+
+<!--
+rename !!! -->.testID {
 	width: 350px;
 	margin-bottom: 25px;
 }
-#submitButtonContainer{
+
+#submitButtonContainer {
 	width: auto;
 	float: rigth;
 	margin-top: 10px;
 }
 
-
 .websiteInfo {
 	border: solid;
 	float: left;
-	margin: 15px 30% 0 20px;
+	margin: 15px 30% 0 370px;
 	display: table;
 }
 
@@ -152,7 +171,14 @@
 	display: table-cell;
 	padding: 50px 20px 0 50px;
 }
-#addComment{
-	
+
+#addComment {
+	position: fixed;
+	margin-left: 75%;
+	margin-top: 30%;
 }
 
+#commentContainer {
+	width: 800px;
+	margin-left: 350px;
+}

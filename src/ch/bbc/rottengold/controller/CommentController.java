@@ -21,29 +21,15 @@ public class CommentController implements Serializable {
 
 	@EJB
 	private CommentBeanLocal commentBean;
-	
+
 	@Inject
 	private UserController userController;
-	
-    private int websiteId;
-    
-	public int getWebsiteId() {
-		return websiteId;
-	}
 
-	public void setWebsiteId(int websiteId) {
-		this.websiteId = websiteId;
-	}
-
-	public UserController getUserController() {
-		return userController;
-	}
-
-	public void setUserController(UserController userController) {
-		this.userController = userController;
-	}
+	private int websiteId;
 
 	private Comment[] comments;
+
+	private int commentDeleteID;
 
 	@Inject
 	private Comment newComment;
@@ -54,7 +40,7 @@ public class CommentController implements Serializable {
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();
 		String idURLParam = request.getParameter("id");
-		if(idURLParam != null) {
+		if (idURLParam != null) {
 			setWebsiteId(Integer.parseInt(idURLParam));
 		}
 		comments = commentBean.getCommentsViaWebsite(idURLParam);
@@ -66,6 +52,20 @@ public class CommentController implements Serializable {
 		commentBean.addComment(newComment);
 		return "";
 
+	}
+
+	public String editComment() {
+		int commentDeleteID = new Integer(
+				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("commentDeleteID"));
+		System.out.println("Edit Comment");
+		return "";
+	}
+
+	public String deleteComment() {
+		int commentDeleteID = new Integer(
+				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("commentDeleteID"));
+		commentBean.deleteComment(commentDeleteID);
+		return "";
 	}
 
 	public Comment[] getComments() {
@@ -91,6 +91,30 @@ public class CommentController implements Serializable {
 
 	public void setNewComment(Comment newComment) {
 		this.newComment = newComment;
+	}
+
+	public int getWebsiteId() {
+		return websiteId;
+	}
+
+	public void setWebsiteId(int websiteId) {
+		this.websiteId = websiteId;
+	}
+
+	public UserController getUserController() {
+		return userController;
+	}
+
+	public void setUserController(UserController userController) {
+		this.userController = userController;
+	}
+
+	public int getCommentDeleteID() {
+		return commentDeleteID;
+	}
+
+	public void setCommentDeleteID(int commentDeleteID) {
+		this.commentDeleteID = commentDeleteID;
 	}
 
 }
