@@ -10,14 +10,6 @@
 			<div id="searchButton">
 				<h:commandButton value="Search" type="submit"
 					action="#{searchController.searchWebsite}" />
-
-				<h:form>
-
-					<h:commandButton id="addWebsitebutton" rendered="#{userController.userLoggedIn}"
-						value="Add Website"
-						action="#{searchController.switchToAddWebsite}" />
-
-				</h:form>
 			</div>
 			<div id="searchResults">
 				<h:dataTable value="#{searchController.searchResults}" var="sr">
