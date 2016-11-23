@@ -1,38 +1,45 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
+<h:html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<head>
+<h:head>
 <link rel="stylesheet" type="text/css" href="styles/custom/custom.css" />
 <link rel="stylesheet" type="text/css"
 	href="styles/bootstrap/css/bootstrap.css" />
-</head>
-<body class="idForBackground">
+</h:head>
+<h:body class="idForBackground">
 	<ui:include src="/header.xhtml" />
-		<div id="fieldContainer">
+	<div id="fieldContainer">
 		<h:form>
-			<br/>
+			<br />
 			<h:outputLabel class="FormulaText" for="email" value="ID:" />
-			<h:outputLabel  class="ResultText" for="email" value="#{userController.user.getIdAsString()}" />
-			<br/>
+			<h:outputLabel class="ResultText" for="email"
+				value="#{userController.user.getIdAsString()}" />
+			<br />
 			<h:outputLabel class="FormulaText" for="email" value="E-Mail: " />
-			<h:outputLabel rendered="#{not userController.edditing}" class="ResultText" for="email" value="#{userController.user.getEmail()}" />
-			<br/>
-			<h:outputLabel class="FormulaText" for="username" value="Username: " />	
-			<h:outputLabel rendered="#{not userController.edditing}" class="ResultText" for="email" value="#{userController.user.getUsername()}" />		
-			<br/>
+			<h:outputLabel class="ResultText" for="email"
+				value="#{userController.user.getEmail()}" />
+			<br />
+			<h:outputLabel class="FormulaText" for="username" value="Username: " />
+			<h:outputLabel rendered="#{not userController.edditing}"
+				class="ResultText" for="email"
+				value="#{userController.user.getUsername()}" />
+			<h:inputText rendered="#{userController.edditing}"
+				class="ResultText" for="email"
+				value="#{userController.user.username}" />
+			<br />
 			<h:outputLabel class="FormulaText" for="password" value="Passwort: " />
-			<h:outputLabel rendered="#{not userController.edditing}" class="ResultText" for="email" value="#{userController.user.getPassword()}" />
-			<br/>
-			<br/>
+			<h:outputLabel rendered="#{not userController.edditing}"
+				class="ResultText" for="email"
+				value="#{userController.user.getPassword()}" />
 			<br/>
 			<h:commandButton action="#{userController.switchToEditAccount()}"
-			value="Edit account" />
-			
-		<h:commandButton class="ResultText" action="#{userController.deleteAccount()}"
-			value="Delete account" />
-	</h:form>
-	</div>
-	</body>
+				value="Edit account" />
 
-</html>
+			<h:commandButton class="deleteAccountButton"
+				action="#{userController.deleteAccount()}" value="Delete account" />
+		</h:form>
+	</div>
+</h:body>
+
+</h:html>

@@ -4,17 +4,37 @@
 	background-color: beige;
 }
 
-#headerDiv {
+.headerDiv {
+	color: black;
 	background-color: black;
 	margin-top: 10px;
 	margin-right: 25px;
 	margin-left: 25px;
 }
 
-#login {
+.navButtons {
+	color: black;
+	background-color: #000;
+	margin: 10px auto;
+}
+.registerbutton{
 	float: right;
-	margin-top: 25px;
-	margin-right: 15px;
+	margin-right: 5px;
+}
+.loginbutton{
+	margin-left: 5px;
+}
+.icon{
+	color: black;
+	margin: 0 auto;
+}
+.login-form {
+	width: 250px;
+	margin: auto;
+}
+.inputfield{
+	width: 200px;
+	margin: 0 auto;
 }
 
 #signUp {
@@ -28,23 +48,24 @@
 	margin-right: 40%;
 	width: 400px;
 }
-.resultText{
+
+.resultText {
+	float: right;
+	padding-bottom: 10px;
+}
+
+.deleteAccountButton {
 	float: right;
 }
 
 .FormulaText {
 	padding-right: 30px;
+	padding-bottom: 10px;
 }
 
 #addWebsitebutton {
 	float: right;
 }
-
-#loginContainer {
-	float: right;
-	margin-right: 40%;
-}
-
 #searchMenu {
 	float: left;
 	border-style: solid;

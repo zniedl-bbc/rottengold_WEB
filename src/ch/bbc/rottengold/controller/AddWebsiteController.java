@@ -21,26 +21,30 @@ public class AddWebsiteController implements Serializable {
 
 	@EJB
 	AddWebsiteBeanLocal addWebsiteBean;
-	
+
 	@Inject
 	Website website;
 
 	String errorMsg = "";
 	Boolean failure = false;
 
-	public String addWebsite() {
+	public void addWebsite() {
+		String protocol =  "https://";
 		boolean nameAllreadyExists = addWebsiteBean.getTitleByName(website);
-		String checkedURL = checkURL(website.getUrl());
-		website.setUrl(checkedURL);
+		if (checkURLHTTP(website.getUrl())) {
+			protocol = "http://";
+		} else if (checkURLHTTPS(website.getUrl())) {
+			protocol = "https://";
+		}
+		website.setUrl(protocol + website.getUrl());
 		if (!nameAllreadyExists) {
-			if (checkNameAndUrlEquality(website.getName(), checkedURL)) {
-				if (!checkedURL.equals("Can not reach website")) {
+			if (checkNameAndUrlEquality(website.getName(), website.getUrl())) {
+				{
 					addWebsiteBean.addWebsite(website);
 					System.out.println("You've done it");
 				}
 			}
 		}
-		return "checkedURL";
 	}
 
 	private boolean checkNameAndUrlEquality(String uncheckedname, String checkedURL) {
@@ -65,7 +69,7 @@ public class AddWebsiteController implements Serializable {
 		return false;
 	}
 
-	private String checkURL(String uncheckedURL) {
+	private boolean checkURLHTTP(String uncheckedURL) {
 		String url = "http://" + uncheckedURL;
 
 		HttpURLConnection connection;
@@ -75,13 +79,32 @@ public class AddWebsiteController implements Serializable {
 			int responseCode = connection.getResponseCode();
 
 			if (responseCode != 200) {
-				return "Can not reach website";
+				return false;
 			}
 		} catch (IOException e) {
-			return "Can not reach website";
+			return false;
 		}
 
-		return url;
+		return true;
+	}
+
+	private boolean checkURLHTTPS(String uncheckedURL) {
+		String url = "https://" + uncheckedURL;
+
+		HttpURLConnection connection;
+		try {
+			connection = (HttpURLConnection) new URL(url).openConnection();
+			connection.setRequestMethod("HEAD");
+			int responseCode = connection.getResponseCode();
+
+			if (responseCode != 200) {
+				return false;
+			}
+		} catch (IOException e) {
+			return false;
+		}
+
+		return true;
 	}
 
 	private boolean switchFlag(boolean startForNameFiltering) {
@@ -91,6 +114,7 @@ public class AddWebsiteController implements Serializable {
 			return true;
 		}
 	}
+
 	public Website getWebsite() {
 		return website;
 	}

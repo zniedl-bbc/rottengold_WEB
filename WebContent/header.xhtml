@@ -1,24 +1,43 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	<div id="headerDiv">
-		<a href = "http://localhost:8080/RottenGold_WEB/faces/mainFrame.xhtml"><img src="img/RottenGoldLogo.png" style="width: 300px;height:75px;"/></a>
-		<div id="login">
-			<h:form>
-				<h:commandButton rendered="#{not userController.userLoggedIn}" action="#{userController.switchToLogin()}"
-					value="Login" />
-				<h:commandButton rendered="#{userController.userLoggedIn}" action="#{userController.logout()}"
-					value="Logout" />
-			</h:form>
-		</div>
-		<div id="signUp"> 
-			<h:form>
-				<h:commandButton rendered="#{not userController.userLoggedIn}" action="#{userController.switchToSignUp()}"
-					value="Sign up" />
-				<h:commandButton rendered="#{userController.userLoggedIn}" action="#{userController.switchToAccount()}"
-					value="Account" />
-			</h:form>
-		</div> 
-	</div>
+<h:head>
+<link rel="stylesheet" type="text/css" href="styles/custom/custom.css" />
+</h:head>
+	<b:navBar class="headerDiv">
+		<a href="http://localhost:8080/RottenGold_WEB/faces/mainFrame.xhtml"><img
+			src="img/RottenGoldLogo.png" style="width: 300px; height: 75px; float: left;" /></a>
+		<b:navbarLinks pull="right">
+			<b:dropMenu rendered="#{userController.userLoggedIn}" class="navButtons" value="Add Website" style="color: white">
+				<h:form class="login-form">
+					<h:outputText class="icon" value="URL" ></h:outputText>
+					<b:inputText required="true" class="inputfield" 
+						value="#{addWebsiteController.website.url}"></b:inputText>
+					<h:outputText class="icon" value="Sitename" ></h:outputText>
+					<b:inputText required="true" class="inputfield" 
+						value="#{addWebsiteController.website.name}"></b:inputText>
+					<h:outputText class="icon" value="Description" ></h:outputText>
+					<b:inputTextarea required="true" class="inputfield" 
+						value="#{addWebsiteController.website.description}"></b:inputTextarea>
+						<b:commandButton class="loginbutton" value="Submit" action="#{addWebsiteController.addWebsite()}"></b:commandButton>
+				</h:form>
+			</b:dropMenu>
+			<b:dropMenu class="navButtons" value="User" style="color: white">
+				<h:form class="login-form">
+					<b:icon class="icon" name="user"></b:icon>
+					<b:inputText class="inputfield" 
+						value="#{userController.user.username}"></b:inputText>
+					<b:icon class="icon" name="lock"></b:icon>
+					<b:inputSecret class="inputfield" 
+						value="#{userController.user.password}"></b:inputSecret>
+					<b:commandButton rendered="#{not userController.userLoggedIn}" class="loginbutton" value="Login" action="#{userController.login()}"></b:commandButton>
+					<b:commandButton rendered="#{userController.userLoggedIn}" class="loginbutton" value="Logout" action="#{userController.logout()}"></b:commandButton>
+					<b:button class="registerbutton" onclick="window.location.href='register.xhtml'"
+						value="Register"></b:button>
+				</h:form>
+			</b:dropMenu>
+		</b:navbarLinks>
+	</b:navBar>
 </ui:composition>
