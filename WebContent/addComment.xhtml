@@ -4,7 +4,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 	<div id="addComment">
-		<h:form>
+		<h:form rendered="#{userController.userLoggedIn}">
 			<h:outputText value="Add new Comment here" />
 			<br />
 			<h:inputText id="commentTitleInput"
@@ -13,6 +13,8 @@
 			<h:inputTextarea id="commentInput"
 				value="#{commentController.newComment.comment}" rows="12" cols="50"
 				required="true"></h:inputTextarea>
+			<br />
+			<h:message errorStyle="color:red; display:block" for="errorMessageAddComment" />
 			<br />
 			<h:commandButton action="#{commentController.addNewComment}"
 				value="Add Comment">
