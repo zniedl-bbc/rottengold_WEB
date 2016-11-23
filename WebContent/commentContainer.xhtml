@@ -12,7 +12,7 @@
 				<div class="commentButtonsContainer">
 					<h:form rendered="#{commentController.isUserCommentWriter(c)}">
 						<h:commandButton value="Edit this comment"
-							action="#{commentController.editComment}"
+							action="#{commentController.changeToEditMode}"
 							class="commentButtons">
 							<f:setPropertyActionListener value="#{c}" target="#{commentController.toBeEditedComment}"/>
 						</h:commandButton>

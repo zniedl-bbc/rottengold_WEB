@@ -25,7 +25,7 @@ public class CommentController implements Serializable {
 
 	@Inject
 	private UserController userController;
-
+	
 	private int websiteId;
 
 	private Comment[] comments;
@@ -38,6 +38,8 @@ public class CommentController implements Serializable {
 	private Comment newComment;
 
 	private Website website;
+	
+	private boolean editing;
 
 	@PostConstruct
 	public void init() {
@@ -48,6 +50,7 @@ public class CommentController implements Serializable {
 			setWebsiteId(Integer.parseInt(idURLParam));
 		}
 		setComments(commentBean.getCommentsViaWebsite(idURLParam));
+		editing = false;
 	}
 
 	public boolean isUserCommentWriter(Comment comment){
@@ -62,12 +65,18 @@ public class CommentController implements Serializable {
 		newComment.setId_website(getWebsiteId());
 		newComment.setId_user(getUserController().getUser().getId());
 		commentBean.addComment(newComment);
+		newComment.clear();
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 
 	}
 
+	public void changeToEditMode(){
+		editing=true;
+	}
+	
 	public String editComment() {
-		System.out.println("Edit Comment: " + getToBeEditedComment().getTitle());
+		commentBean.editComment(toBeEditedComment);
+		editing=false;
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
@@ -130,6 +139,14 @@ public class CommentController implements Serializable {
 
 	public void setToBeEditedComment(Comment toBeEditedComment) {
 		this.toBeEditedComment = toBeEditedComment;
+	}
+
+	public boolean isEditing() {
+		return editing;
+	}
+
+	public void setEditing(boolean editing) {
+		this.editing = editing;
 	}
 
 }
