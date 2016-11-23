@@ -2,9 +2,10 @@ package ch.bbc.rottengold.controller;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,7 @@ import ch.bbc.rottengold.model.Comment;
 import ch.bbc.rottengold.model.Website;
 
 @Named
-@SessionScoped
+@ViewScoped
 public class CommentController implements Serializable {
 
 	private static final long serialVersionUID = -2587101126657460690L;
@@ -29,47 +30,53 @@ public class CommentController implements Serializable {
 
 	private Comment[] comments;
 
-	private int commentDeleteID;
+	private Comment toBeDeletedComment;
 
+	private Comment toBeEditedComment;
+	
 	@Inject
 	private Comment newComment;
 
 	private Website website;
 
-	private void setCommentsViaWebsiteId() {
+	@PostConstruct
+	public void init() {
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();
 		String idURLParam = request.getParameter("id");
 		if (idURLParam != null) {
 			setWebsiteId(Integer.parseInt(idURLParam));
 		}
-		comments = commentBean.getCommentsViaWebsite(idURLParam);
+		setComments(commentBean.getCommentsViaWebsite(idURLParam));
+	}
+
+	public boolean isUserCommentWriter(Comment comment){
+		if (userController.getUser().getId() == comment.getId_user()){
+			return true;
+		}
+		
+		return false;
 	}
 
 	public String addNewComment() {
 		newComment.setId_website(getWebsiteId());
 		newComment.setId_user(getUserController().getUser().getId());
 		commentBean.addComment(newComment);
-		return "";
+		return "mainFrame?faces-redirect=true&includeViewParams=true";
 
 	}
 
 	public String editComment() {
-		int commentDeleteID = new Integer(
-				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("commentDeleteID"));
-		System.out.println("Edit Comment");
-		return "";
+		System.out.println("Edit Comment: " + getToBeEditedComment().getTitle());
+		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
 	public String deleteComment() {
-		int commentDeleteID = new Integer(
-				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("commentDeleteID"));
-		commentBean.deleteComment(commentDeleteID);
-		return "";
+		commentBean.deleteComment(toBeDeletedComment.getId());
+		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
 	public Comment[] getComments() {
-		setCommentsViaWebsiteId();
 		return comments;
 	}
 
@@ -109,12 +116,20 @@ public class CommentController implements Serializable {
 		this.userController = userController;
 	}
 
-	public int getCommentDeleteID() {
-		return commentDeleteID;
+	public Comment getToBeDeletedComment() {
+		return toBeDeletedComment;
 	}
 
-	public void setCommentDeleteID(int commentDeleteID) {
-		this.commentDeleteID = commentDeleteID;
+	public void setToBeDeletedComment(Comment toBeDeletedComment) {
+		this.toBeDeletedComment = toBeDeletedComment;
+	}
+
+	public Comment getToBeEditedComment() {
+		return toBeEditedComment;
+	}
+
+	public void setToBeEditedComment(Comment toBeEditedComment) {
+		this.toBeEditedComment = toBeEditedComment;
 	}
 
 }

@@ -21,14 +21,14 @@ public class SearchController implements Serializable {
 	private SearchBeanLocal searchBean;
 
 	private Website[] searchResults;
-	
-	public String switchToAddWebsite(){
+
+	public String switchToAddWebsite() {
 		return "/addWebsite";
 	}
 
 	public String searchWebsite() {
 		searchResults = searchBean.searchWebsite(searchInput);
-		return "/mainFrame";
+		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
 	public Website[] getSearchResults() {
