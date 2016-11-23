@@ -70,14 +70,15 @@ public class CommentController implements Serializable {
 
 	}
 
-	public void changeToEditMode(){
+	public String changeToEditMode(){
 		editing=true;
+		return null;
 	}
 	
 	public String editComment() {
 		commentBean.editComment(toBeEditedComment);
 		editing=false;
-		return "mainFrame?faces-redirect=true&includeViewParams=true";
+		return null;
 	}
 
 	public String deleteComment() {
