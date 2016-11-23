@@ -26,9 +26,8 @@ public class SearchController implements Serializable {
 		return "/addWebsite";
 	}
 
-	public String searchWebsite() {
+	public void searchWebsite() {
 		searchResults = searchBean.searchWebsite(searchInput);
-		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
 	public Website[] getSearchResults() {
