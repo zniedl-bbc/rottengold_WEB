@@ -10,6 +10,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
+import com.sun.glass.ui.Window;
+
 import ch.bbc.rottengold.ejb.CommentBeanLocal;
 import ch.bbc.rottengold.model.Comment;
 import ch.bbc.rottengold.model.Website;
@@ -25,7 +27,7 @@ public class CommentController implements Serializable {
 
 	@Inject
 	private UserController userController;
-	
+
 	private int websiteId;
 
 	private Comment[] comments;
@@ -33,12 +35,12 @@ public class CommentController implements Serializable {
 	private Comment toBeDeletedComment;
 
 	private Comment toBeEditedComment;
-	
+
 	@Inject
 	private Comment newComment;
 
 	private Website website;
-	
+
 	private boolean editing;
 
 	@PostConstruct
@@ -53,11 +55,11 @@ public class CommentController implements Serializable {
 		editing = false;
 	}
 
-	public boolean isUserCommentWriter(Comment comment){
-		if (userController.getUser().getId() == comment.getId_user()){
+	public boolean isUserCommentWriter(Comment comment) {
+		if (userController.getUser().getId() == comment.getId_user()) {
 			return true;
 		}
-		
+
 		return false;
 	}
 
@@ -70,14 +72,15 @@ public class CommentController implements Serializable {
 
 	}
 
-	public void changeToEditMode(){
-		editing=true;
+	public String changeToEditMode() {
+		editing = true;
+		return null;
 	}
-	
+
 	public String editComment() {
 		commentBean.editComment(toBeEditedComment);
-		editing=false;
-		return "mainFrame?faces-redirect=true&includeViewParams=true";
+		editing = false;
+		return null;
 	}
 
 	public String deleteComment() {

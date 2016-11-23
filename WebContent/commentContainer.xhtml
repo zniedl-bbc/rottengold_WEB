@@ -14,13 +14,15 @@
 						<h:commandButton value="Edit this comment"
 							action="#{commentController.changeToEditMode}"
 							class="commentButtons">
-							<f:setPropertyActionListener value="#{c}" target="#{commentController.toBeEditedComment}"/>
+							<f:setPropertyActionListener value="#{c}"
+								target="#{commentController.toBeEditedComment}" />
 						</h:commandButton>
 						<br />
 						<h:commandButton value="Delete this comment"
 							action="#{commentController.deleteComment}"
 							class="commentButtons">
-							<f:setPropertyActionListener value="#{c}" target="#{commentController.toBeDeletedComment}"/>
+							<f:setPropertyActionListener value="#{c}"
+								target="#{commentController.toBeDeletedComment}" />
 						</h:commandButton>
 					</h:form>
 				</div>
