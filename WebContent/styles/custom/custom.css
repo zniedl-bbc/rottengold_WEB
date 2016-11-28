@@ -196,10 +196,15 @@ rename !!! -->.testID {
 #addComment {
 	position: fixed;
 	margin-left: 75%;
-	margin-top: 30%;
+	margin-top: 20%;
 }
 
 #commentContainer {
 	width: 800px;
 	margin-left: 350px;
+}
+
+.goldbar{
+	width: 30px;
+	height: 30px;
 }

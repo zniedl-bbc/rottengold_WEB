@@ -23,14 +23,13 @@
 				rendered="#{commentController.editing}"></h:inputText>
 			<br />
 			<h:inputTextarea class="commentInput"
-				value="#{commentController.toBeEditedComment.comment}" rows="12" cols="50"
-				required="true" rendered="#{commentController.editing}"></h:inputTextarea>
+				value="#{commentController.toBeEditedComment.comment}" rows="12"
+				cols="50" required="true" rendered="#{commentController.editing}"></h:inputTextarea>
 
 
-			<br />
+
 			<h:message errorStyle="color:red; display:block"
 				for="errorMessageAddComment" />
-			<br />
 			<h:commandButton action="#{commentController.addNewComment}"
 				value="Add Comment" rendered="#{not commentController.editing}">
 				<f:param name="id" value="#{commentController.websiteId}" />

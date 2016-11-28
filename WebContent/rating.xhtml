@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<h:form>
+		<h:commandButton class="goldbar" image="img/goldbarrenleer.png"
+			rendered="#{not websiteInfoController.it1StarRating}"
+			action="#{websiteInfoController.set1StarRatingForUser}"></h:commandButton>
+		<h:commandButton class="goldbar" image="img/goldbarren.png"
+			rendered="#{websiteInfoController.it1StarRating}"
+			action="#{websiteInfoController.set1StarRatingForUser}"></h:commandButton>
+
+		<h:commandButton image="img/goldbarrenleer.png"
+			rendered="#{not websiteInfoController.it2StarRating}"
+			action="#{websiteInfoController.set2StarRatingForUser}"></h:commandButton>
+
+		<h:commandButton image="img/goldbarren.png"
+			rendered="#{websiteInfoController.it2StarRating}"
+			action="#{websiteInfoController.set2StarRatingForUser}"></h:commandButton>
+
+		<h:commandButton image="img/goldbarrenleer.png"
+			rendered="#{not websiteInfoController.it3StarRating}"
+			action="#{websiteInfoController.set3StarRatingForUser}"></h:commandButton>
+
+		<h:commandButton image="img/goldbarren.png"
+			rendered="#{websiteInfoController.it3StarRating}"
+			action="#{websiteInfoController.set3StarRatingForUser}"></h:commandButton>
+
+		<h:commandButton image="img/goldbarrenleer.png"
+			rendered="#{not websiteInfoController.it4StarRating}"
+			action="#{websiteInfoController.set4StarRatingForUser}"></h:commandButton>
+
+		<h:commandButton image="img/goldbarren.png"
+			rendered="#{websiteInfoController.it4StarRating}"
+			action="#{websiteInfoController.set4StarRatingForUser}"></h:commandButton>
+
+		<h:commandButton image="img/goldbarrenleer.png"
+			rendered="#{not websiteInfoController.it5StarRating}"
+			action="#{websiteInfoController.set5StarRatingForUser}"></h:commandButton>
+
+		<h:commandButton image="img/goldbarren.png"
+			rendered="#{websiteInfoController.it5StarRating}"
+			action="#{websiteInfoController.set5StarRatingForUser}"></h:commandButton>
+
+
+	</h:form>
+
+</ui:composition>
