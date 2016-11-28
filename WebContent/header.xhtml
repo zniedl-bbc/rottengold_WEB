@@ -29,16 +29,16 @@
 			<b:dropMenu class="navButtons" value="User" style="color: white">
 				<h:form class="login-form">
 					<b:icon class="icon" name="user"></b:icon>
-					<b:inputText class="inputfield"value="#{userController.user.username}" ></b:inputText>
+					<b:inputText class="inputfield" value="#{userController.user.username}" ></b:inputText>
 					<b:icon class="icon" name="lock"></b:icon>
-					<b:inputSecret class="inputfield"value="#{userController.user.password}"></b:inputSecret>
-					<b:commandButton rendered="#{not userController.userLoggedIn}"class="loginbutton" value="Login"
+					<b:inputSecret class="inputfield" value="#{userController.user.password}"></b:inputSecret>
+					<b:commandButton rendered="#{not userController.userLoggedIn}" class="loginbutton" value="Login"
 						action="#{userController.login()}"></b:commandButton>
-					<b:commandButton rendered="#{userController.userLoggedIn}"class="loginbutton" value="Logout"
+					<b:commandButton rendered="#{userController.userLoggedIn}" class="loginbutton" value="Logout"
 						action="#{userController.logout()}"></b:commandButton>
-					<b:commandButton rendered="#{not userController.userLoggedIn}"class="registerbutton" action="#{userController.switchToSignUp}"
+					<b:commandButton rendered="#{not userController.userLoggedIn}" class="registerbutton" action="#{userController.switchToSignUp}"
 						value="Register" />
-					<b:dropMenu rendered="#{userController.userLoggedIn}"class="registerbutton" value="User">
+					<b:dropMenu rendered="#{userController.userLoggedIn}" class="registerbutton" value="User">
 						<h:form class="login-form">
 							<b:inputText class="inputfield"
 								value="#{userController.user.username}"></b:inputText>
