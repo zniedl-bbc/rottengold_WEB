@@ -28,21 +28,8 @@ public class UserController implements Serializable {
 	private boolean usedUsername = false;
 	private boolean edditing = false;
 
-	public String switchToSignUp() {
-		setEdditing(true);
-		return "/signUp";
-	}
-
-	public String switchToLogin() {
-		return "/login";
-	}
-	
-	public String switchToAccount(){
-		return "/account";
-	}
-	public String switchToEditAccount(){
-		
-		return "/account";
+	public String switchToChangePassword(){
+		return "/";
 	}
 
 	public String register() {

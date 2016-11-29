@@ -28,24 +28,35 @@
 			</b:dropMenu>
 			<b:dropMenu class="navButtons" value="User" style="color: white">
 				<h:form class="login-form">
-					<b:icon class="icon" name="user"></b:icon>
-					<b:inputText class="inputfield" value="#{userController.user.username}" ></b:inputText>
+					<b:icon rendered="#{not userController.userLoggedIn}" class="icon" name="user"></b:icon>
+					<b:inputText name="username" rendered="#{not userController.userLoggedIn}" class="inputfield" value="#{userController.user.username}" ></b:inputText>
 					<b:icon class="icon" name="lock"></b:icon>
-					<b:inputSecret class="inputfield" value="#{userController.user.password}"></b:inputSecret>
+					<b:inputSecret rendered="#{not userController.userLoggedIn}" name="pwd" class="inputfield" value="#{userController.user.password}"></b:inputSecret>		
 					<b:commandButton rendered="#{not userController.userLoggedIn}" class="loginbutton" value="Login"
 						action="#{userController.login()}"></b:commandButton>
+					
 					<b:commandButton rendered="#{userController.userLoggedIn}" class="loginbutton" value="Logout"
 						action="#{userController.logout()}"></b:commandButton>
-					<b:commandButton rendered="#{not userController.userLoggedIn}" class="registerbutton" action="#{userController.switchToSignUp}"
-						value="Register" />
-					<b:dropMenu rendered="#{userController.userLoggedIn}" class="registerbutton" value="User">
-						<h:form class="login-form">
-							<b:inputText class="inputfield"
-								value="#{userController.user.username}"></b:inputText>
-						</h:form>
-					</b:dropMenu>
+						<br/>	
+					<b:commandButton rendered="#{userController.userLoggedIn}" class="loginbutton" value="Delete Account"
+						action="#{userController.deleteAccount()}"></b:commandButton>
+						<br/>
+					<b:commandButton rendered="#{userController.userLoggedIn}" class="loginbutton" value="Change Password"
+						action="#{userController.switchToChangePassword()}"></b:commandButton>
+				</h:form>
+			</b:dropMenu>
+			<b:dropMenu rendered="#{not userController.userLoggedIn}" class="navButtons" value="Sign Up" style="color: white">
+				<h:form class="login-form" onclick="return checkFormRegister(this);">
+					<b:icon class="icon" name="envelope"></b:icon>
+					<b:inputText name="email" class="inputfield" value="#{userController.user.email}" ></b:inputText>
+					<b:icon class="icon" name="user"></b:icon>
+					<b:inputText name="username" class="inputfield" value="#{userController.user.username}" ></b:inputText>
+					<b:icon class="icon" name="lock"></b:icon>
+					<b:inputSecret name="pwd1" class="inputfield" value="#{userController.user.password}"></b:inputSecret>
+					<b:inputSecret name="pwd2" class="inputfield" value="#{userController.user.password}"></b:inputSecret>		
+					<b:commandButton class="registerbutton" action="#{userController.register()}" value="Register" />
 				</h:form>
 			</b:dropMenu>
 		</b:navbarLinks>
-	</b:navBar>
+	</b:navBar>		
 </ui:composition>
