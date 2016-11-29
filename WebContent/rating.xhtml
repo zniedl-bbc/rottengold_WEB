@@ -5,43 +5,44 @@
 
 	<h:form>
 		<h:commandButton class="goldbar" image="img/goldbarrenleer.png"
-			rendered="#{not websiteInfoController.it1StarRating}"
-			action="#{websiteInfoController.set1StarRatingForUser}"></h:commandButton>
+			rendered="#{not websiteInfoController.ratingAvailable(0.5)}"
+			action="#{websiteInfoController.setStarRatingForUser(1)}"></h:commandButton>
+
 		<h:commandButton class="goldbar" image="img/goldbarren.png"
-			rendered="#{websiteInfoController.it1StarRating}"
-			action="#{websiteInfoController.set1StarRatingForUser}"></h:commandButton>
+			rendered="#{websiteInfoController.ratingAvailable(0.5)}"
+			action="#{websiteInfoController.setStarRatingForUser(1)}"></h:commandButton>
 
-		<h:commandButton image="img/goldbarrenleer.png"
-			rendered="#{not websiteInfoController.it2StarRating}"
-			action="#{websiteInfoController.set2StarRatingForUser}"></h:commandButton>
+		<h:commandButton class="goldbar" image="img/goldbarrenleer.png"
+			rendered="#{not websiteInfoController.ratingAvailable(1.5)}"
+			action="#{websiteInfoController.setStarRatingForUser(2)}"></h:commandButton>
 
-		<h:commandButton image="img/goldbarren.png"
-			rendered="#{websiteInfoController.it2StarRating}"
-			action="#{websiteInfoController.set2StarRatingForUser}"></h:commandButton>
+		<h:commandButton class="goldbar" image="img/goldbarren.png"
+			rendered="#{websiteInfoController.ratingAvailable(1.5)}"
+			action="#{websiteInfoController.setStarRatingForUser(2)}"></h:commandButton>
 
-		<h:commandButton image="img/goldbarrenleer.png"
-			rendered="#{not websiteInfoController.it3StarRating}"
-			action="#{websiteInfoController.set3StarRatingForUser}"></h:commandButton>
+		<h:commandButton class="goldbar" image="img/goldbarrenleer.png"
+			rendered="#{not websiteInfoController.ratingAvailable(2.5)}"
+			action="#{websiteInfoController.setStarRatingForUser(3)}"></h:commandButton>
 
-		<h:commandButton image="img/goldbarren.png"
-			rendered="#{websiteInfoController.it3StarRating}"
-			action="#{websiteInfoController.set3StarRatingForUser}"></h:commandButton>
+		<h:commandButton class="goldbar" image="img/goldbarren.png"
+			rendered="#{websiteInfoController.ratingAvailable(2.5)}"
+			action="#{websiteInfoController.setStarRatingForUser(3)}"></h:commandButton>
 
-		<h:commandButton image="img/goldbarrenleer.png"
-			rendered="#{not websiteInfoController.it4StarRating}"
-			action="#{websiteInfoController.set4StarRatingForUser}"></h:commandButton>
+		<h:commandButton class="goldbar" image="img/goldbarrenleer.png"
+			rendered="#{not websiteInfoController.ratingAvailable(3.5)}"
+			action="#{websiteInfoController.setStarRatingForUser(4)}"></h:commandButton>
 
-		<h:commandButton image="img/goldbarren.png"
-			rendered="#{websiteInfoController.it4StarRating}"
-			action="#{websiteInfoController.set4StarRatingForUser}"></h:commandButton>
+		<h:commandButton class="goldbar" image="img/goldbarren.png"
+			rendered="#{websiteInfoController.ratingAvailable(3.5)}"
+			action="#{websiteInfoController.setStarRatingForUser(4)}"></h:commandButton>
 
-		<h:commandButton image="img/goldbarrenleer.png"
-			rendered="#{not websiteInfoController.it5StarRating}"
-			action="#{websiteInfoController.set5StarRatingForUser}"></h:commandButton>
+		<h:commandButton class="goldbar" image="img/goldbarrenleer.png"
+			rendered="#{not websiteInfoController.ratingAvailable(4.5)}"
+			action="#{websiteInfoController.setStarRatingForUser(5)}"></h:commandButton>
 
-		<h:commandButton image="img/goldbarren.png"
-			rendered="#{websiteInfoController.it5StarRating}"
-			action="#{websiteInfoController.set5StarRatingForUser}"></h:commandButton>
+		<h:commandButton class="goldbar" image="img/goldbarren.png"
+			rendered="#{websiteInfoController.ratingAvailable(4.5)}"
+			action="#{websiteInfoController.setStarRatingForUser(5)}"></h:commandButton>
 
 
 	</h:form>

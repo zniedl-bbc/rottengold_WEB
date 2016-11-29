@@ -31,6 +31,8 @@ public class WebsiteInfoController implements Serializable {
 
 	private Rating rating;
 
+	private boolean ratingAvailable;
+
 	private Rating[] allRatingsForCurrentWebsite;
 
 	@PostConstruct
@@ -38,10 +40,10 @@ public class WebsiteInfoController implements Serializable {
 		currentWebsite = websiteInfoBean.getWebsiteInfo("" + commentController.getWebsiteId());
 		setRating(ratingBean.getRatingForWebsiteWithUser(commentController.getWebsiteId(),
 				commentController.getUserController().getUser().getId()));
-		setAllRatingsForCurrentWebsite(ratingBean.getAllRatingsForWebsite(commentController.getWebsiteId()));
+		allRatingsForCurrentWebsite = ratingBean.getAllRatingsForWebsite(commentController.getWebsiteId());
 	}
 
-	public double getAverageRating() {
+	private double getAverageRating() {
 		int counter = 0;
 		double averageRating = 0.0;
 
@@ -51,7 +53,7 @@ public class WebsiteInfoController implements Serializable {
 				counter++;
 			}
 		} catch (NullPointerException e) {
-			
+
 		}
 
 		averageRating = averageRating / counter;
@@ -59,64 +61,9 @@ public class WebsiteInfoController implements Serializable {
 		return averageRating;
 	}
 
-	public boolean isIt1StarRating() {
-		if (getAverageRating() > 0.5) {
-			return true;
-		}
-		return false;
-	}
-
-	public boolean isIt2StarRating() {
-		if (getAverageRating() > 1.5) {
-			return true;
-		}
-		return false;
-	}
-
-	public boolean isIt3StarRating() {
-		if (getAverageRating() > 2.5) {
-			return true;
-		}
-		return false;
-	}
-
-	public boolean isIt4StarRating() {
-		if (getAverageRating() > 3.5) {
-			return true;
-		}
-		return false;
-	}
-
-	public boolean isIt5StarRating() {
-		if (getAverageRating() > 4.5) {
-			return true;
-		}
-		return false;
-	}
-
-	public void set1StarRatingForUser() {
-		ratingBean.setNewRatingForThisUser(1, commentController.getUserController().getUser().getId(),
-				commentController.getWebsiteId());
-	}
-
-	public void set2StarRatingForUser() {
-		ratingBean.setNewRatingForThisUser(2, commentController.getUserController().getUser().getId(),
-				commentController.getWebsiteId());
-	}
-
-	public void set3StarRatingForUser() {
-		ratingBean.setNewRatingForThisUser(3, commentController.getUserController().getUser().getId(),
-				commentController.getWebsiteId());
-	}
-
-	public void set4StarRatingForUser() {
-		ratingBean.setNewRatingForThisUser(4, commentController.getUserController().getUser().getId(),
-				commentController.getWebsiteId());
-	}
-
-	public void set5StarRatingForUser() {
-		ratingBean.setNewRatingForThisUser(5, commentController.getUserController().getUser().getId(),
-				commentController.getWebsiteId());
+	public void setStarRatingForUser(int rating) {
+		ratingBean.setNewRatingForThisUser(rating, commentController.getUserController().getUser().getId(),
+				currentWebsite.getId());
 	}
 
 	public Website getCurrentWebsite() {
@@ -135,8 +82,16 @@ public class WebsiteInfoController implements Serializable {
 		this.rating = rating;
 	}
 
-	public boolean isRatingAvailable() {
-		return true;
+	public void setRatingAvailable(boolean ratingAvailable) {
+		this.ratingAvailable = ratingAvailable;
+	}
+
+	public boolean ratingAvailable(double requiredRating) {
+		ratingAvailable = false;
+		if (getAverageRating() > requiredRating) {
+			ratingAvailable = true;
+		}
+		return ratingAvailable;
 	}
 
 	public Rating[] getAllRatingsForCurrentWebsite() {
