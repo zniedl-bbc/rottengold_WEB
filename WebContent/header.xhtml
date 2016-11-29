@@ -40,9 +40,6 @@
 						<br/>	
 					<b:commandButton rendered="#{userController.userLoggedIn}" class="loginbutton" value="Delete Account"
 						action="#{userController.deleteAccount()}"></b:commandButton>
-						<br/>
-					<b:commandButton rendered="#{userController.userLoggedIn}" class="loginbutton" value="Change Password"
-						action="#{userController.switchToChangePassword()}"></b:commandButton>
 				</h:form>
 			</b:dropMenu>
 			<b:dropMenu rendered="#{not userController.userLoggedIn}" class="navButtons" value="Sign Up" style="color: white">
