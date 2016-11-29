@@ -29,7 +29,15 @@ public class WebsiteInfoController implements Serializable {
 	@Inject
 	private CommentController commentController;
 
-	private Rating rating;
+	private Rating ratingFromUser;
+
+	public Rating getRatingFromUser() {
+		return ratingFromUser;
+	}
+
+	public void setRatingFromUser(Rating ratingFromUser) {
+		this.ratingFromUser = ratingFromUser;
+	}
 
 	private boolean ratingAvailable;
 
@@ -38,8 +46,8 @@ public class WebsiteInfoController implements Serializable {
 	@PostConstruct
 	public void init() {
 		currentWebsite = websiteInfoBean.getWebsiteInfo("" + commentController.getWebsiteId());
-		setRating(ratingBean.getRatingForWebsiteWithUser(commentController.getWebsiteId(),
-				commentController.getUserController().getUser().getId()));
+		ratingFromUser = ratingBean.getRatingForWebsiteWithUser(commentController.getWebsiteId(),
+				commentController.getUserController().getUser().getId());
 		allRatingsForCurrentWebsite = ratingBean.getAllRatingsForWebsite(commentController.getWebsiteId());
 	}
 
@@ -61,9 +69,15 @@ public class WebsiteInfoController implements Serializable {
 		return averageRating;
 	}
 
-	public void setStarRatingForUser(int rating) {
-		ratingBean.setNewRatingForThisUser(rating, commentController.getUserController().getUser().getId(),
-				currentWebsite.getId());
+	public String setStarRatingForUser(int rating) {
+		if (ratingFromUser == null) {
+			ratingBean.setNewRatingForThisUser(rating, commentController.getUserController().getUser().getId(),
+					currentWebsite.getId());
+		} else {
+			ratingBean.updateRating(rating, commentController.getUserController().getUser().getId(),
+					currentWebsite.getId());
+		}
+		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
 	public Website getCurrentWebsite() {
@@ -72,14 +86,6 @@ public class WebsiteInfoController implements Serializable {
 
 	public void setCurrentWebsite(Website currentWebsite) {
 		this.currentWebsite = currentWebsite;
-	}
-
-	public Rating getRating() {
-		return rating;
-	}
-
-	public void setRating(Rating rating) {
-		this.rating = rating;
 	}
 
 	public void setRatingAvailable(boolean ratingAvailable) {

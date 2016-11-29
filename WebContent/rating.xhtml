@@ -3,7 +3,7 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-	<h:form>
+	<h:form rendered="#{userController.userLoggedIn}">
 		<h:commandButton class="goldbar" image="img/goldbarrenleer.png"
 			rendered="#{not websiteInfoController.ratingAvailable(0.5)}"
 			action="#{websiteInfoController.setStarRatingForUser(1)}"></h:commandButton>
