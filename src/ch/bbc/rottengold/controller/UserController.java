@@ -28,10 +28,6 @@ public class UserController implements Serializable {
 	private boolean usedUsername = false;
 	private boolean edditing = false;
 
-	public String switchToChangePassword(){
-		return "/";
-	}
-
 	public String register() {
 		int result = userBean.registerUser(user);
 		if(result == 0){
@@ -64,6 +60,11 @@ public class UserController implements Serializable {
 	public String deleteAccount(){
 		userBean.deleteAccount(user);
 		return "/mainFrame";
+	}
+	
+	public String changePassword(){
+		userBean.changePassword(user);
+		return "";
 	}
 
 	public User getUser() {
