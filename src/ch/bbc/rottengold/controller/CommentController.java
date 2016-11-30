@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.NotFoundException;
 
 import ch.bbc.rottengold.ejb.CommentBeanLocal;
+import ch.bbc.rottengold.ejb.WebsiteInfoBeanLocal;
 import ch.bbc.rottengold.model.Comment;
 import ch.bbc.rottengold.model.Website;
 
@@ -23,6 +24,9 @@ public class CommentController implements Serializable {
 
 	@EJB
 	private CommentBeanLocal commentBean;
+	
+	@EJB
+	private WebsiteInfoBeanLocal websiteInfoBean;
 
 	@Inject
 	private UserController userController;
@@ -57,7 +61,7 @@ public class CommentController implements Serializable {
 		}
 		setWebsiteId(idURLParam);
 		comments = null;
-		setComments(commentBean.getCommentsViaWebsite(idURLParam));
+		setComments(commentBean.getCommentsViaWebsite(idURLParam, websiteInfoBean.findBiggestWebsiteId(idURLParam)));
 		if (comments != null) {
 			idFound = true;
 			if (comments[0].getId_website() != websiteId) {

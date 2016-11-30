@@ -68,7 +68,9 @@ public class WebsiteInfoController implements Serializable {
 		} catch (NullPointerException e) {
 
 		}
-
+		if (counter == 0) {
+			counter = 1;
+		}
 		averageRating = averageRating / counter;
 
 		return averageRating;
