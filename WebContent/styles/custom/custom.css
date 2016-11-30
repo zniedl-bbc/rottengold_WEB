@@ -217,5 +217,15 @@ rename !!! -->.testID {
 
 .error404 {
 	float: left;
-	margin-left: 400px;
+	margin: 15px 0 0 370px;
+}
+#error404Text{
+	font-size: 20px;
+	margin-left: 100px;
+}
+
+#error404Img {
+	height: 70%;
+	width: 130%;
+	float:left;
 }

@@ -32,10 +32,10 @@ public class UserController implements Serializable {
 		int result = userBean.registerUser(user);
 		if(result == 0){
 			setUsedUsername(false);
-			return "/mainFrame";
+			return "mainFrame?faces-redirect=true&includeViewParams=true";
 		}else{
 			setUsedUsername(true);
-			return "/signUp";
+			return "mainFrame?faces-redirect=true&includeViewParams=true";
 		}
 	}
 
@@ -46,25 +46,25 @@ public class UserController implements Serializable {
 		} else {
 			setUserLoggedIn(true);
 			setUser(tempUser.get(0));
-			return "/mainFrame";
+			return "mainFrame?faces-redirect=true&includeViewParams=true";
 		}
-		return "";
+		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
 	public String logout(){
 		setUserLoggedIn(false);
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "";
+		return "mainFrame?faces-redirect=true&includeViewParams=true";
 
 	}
 	public String deleteAccount(){
 		userBean.deleteAccount(user);
-		return "/mainFrame";
+		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 	
 	public String changePassword(){
 		userBean.changePassword(user);
-		return "";
+		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
 	public User getUser() {
