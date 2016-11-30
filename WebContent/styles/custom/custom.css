@@ -17,22 +17,27 @@
 	background-color: #000;
 	margin: 10px auto;
 }
-.registerbutton{
+
+.registerbutton {
 	float: right;
 	margin-right: 5px;
 }
-.loginbutton{
+
+.loginbutton {
 	margin-left: 5px;
 }
-.icon{
+
+.icon {
 	color: black;
 	margin: 0 auto;
 }
+
 .login-form {
 	width: 250px;
 	margin: auto;
 }
-.inputfield{
+
+.inputfield {
 	width: 200px;
 	margin: 0 auto;
 }
@@ -66,6 +71,7 @@
 #addWebsitebutton {
 	float: right;
 }
+
 #searchMenu {
 	float: left;
 	border-style: solid;
@@ -204,7 +210,12 @@ rename !!! -->.testID {
 	margin-left: 350px;
 }
 
-.goldbar{
+.goldbar {
 	width: 30px;
 	height: 30px;
+}
+
+.error404 {
+	float: left;
+	margin-left: 400px;
 }

@@ -9,8 +9,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-
-import com.sun.glass.ui.Window;
+import javax.ws.rs.NotFoundException;
 
 import ch.bbc.rottengold.ejb.CommentBeanLocal;
 import ch.bbc.rottengold.model.Comment;
@@ -36,6 +35,8 @@ public class CommentController implements Serializable {
 
 	private Comment toBeEditedComment;
 
+	private boolean idFound;
+
 	@Inject
 	private Comment newComment;
 
@@ -47,11 +48,23 @@ public class CommentController implements Serializable {
 	public void init() {
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();
-		String idURLParam = request.getParameter("id");
-		if (idURLParam != null) {
-			setWebsiteId(Integer.parseInt(idURLParam));
+		int idURLParam = 0;
+		idFound = false;
+		if (request.getParameter("id") != null) {
+			idURLParam = Integer.parseInt(request.getParameter("id"));
+		} else if (request.getParameter("id") == "0") {
+			idURLParam = 1;
 		}
+		setWebsiteId(idURLParam);
+		comments = null;
 		setComments(commentBean.getCommentsViaWebsite(idURLParam));
+		if (comments != null) {
+			idFound = true;
+			if (comments[0].getId_website() != websiteId) {
+				comments = null;
+			}
+		}
+
 		editing = false;
 	}
 
@@ -150,6 +163,14 @@ public class CommentController implements Serializable {
 
 	public void setEditing(boolean editing) {
 		this.editing = editing;
+	}
+
+	public boolean isIdFound() {
+		return idFound;
+	}
+
+	public void setIdFound(boolean idFound) {
+		this.idFound = idFound;
 	}
 
 }

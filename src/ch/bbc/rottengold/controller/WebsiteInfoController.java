@@ -29,6 +29,8 @@ public class WebsiteInfoController implements Serializable {
 	@Inject
 	private CommentController commentController;
 
+	private double averageRating;
+
 	private Rating ratingFromUser;
 
 	public Rating getRatingFromUser() {
@@ -45,15 +47,18 @@ public class WebsiteInfoController implements Serializable {
 
 	@PostConstruct
 	public void init() {
+		if (commentController.getWebsiteId() == 0) {
+			commentController.setWebsiteId(1);
+		}
 		currentWebsite = websiteInfoBean.getWebsiteInfo("" + commentController.getWebsiteId());
 		ratingFromUser = ratingBean.getRatingForWebsiteWithUser(commentController.getWebsiteId(),
 				commentController.getUserController().getUser().getId());
 		allRatingsForCurrentWebsite = ratingBean.getAllRatingsForWebsite(commentController.getWebsiteId());
 	}
 
-	private double getAverageRating() {
+	public double getAverageRating() {
 		int counter = 0;
-		double averageRating = 0.0;
+		averageRating = 0.0;
 
 		try {
 			for (Rating r : allRatingsForCurrentWebsite) {
@@ -67,6 +72,10 @@ public class WebsiteInfoController implements Serializable {
 		averageRating = averageRating / counter;
 
 		return averageRating;
+	}
+
+	public void setAverageRating(double averageRating) {
+		this.averageRating = averageRating;
 	}
 
 	public String setStarRatingForUser(int rating) {
