@@ -219,7 +219,8 @@ rename !!! -->.testID {
 	float: left;
 	margin: 15px 0 0 370px;
 }
-#error404Text{
+
+#error404Text {
 	font-size: 20px;
 	margin-left: 100px;
 }
@@ -227,7 +228,7 @@ rename !!! -->.testID {
 #error404Img {
 	height: 70%;
 	width: 130%;
-	float:left;
+	float: left;
 }
 
 #profilePic{
@@ -236,4 +237,13 @@ rename !!! -->.testID {
 	
 	margin-top: 12px;
 	float:right;
+
+}
+.commentProfileImg {
+	margin: 5px;
+	width: 50px;
+	height: 60px;
+	float: right;
+	width: 50px;
+
 }

@@ -40,6 +40,8 @@ public class CommentController implements Serializable {
 	private Comment toBeEditedComment;
 
 	private boolean idFound;
+	
+	
 
 	@Inject
 	private Comment newComment;
@@ -104,6 +106,11 @@ public class CommentController implements Serializable {
 		commentBean.deleteComment(toBeDeletedComment.getId());
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
+	
+	public String getCommentCreatorProfileImg(int userId){
+		return userController.getProfileImgPathById(userId);
+	}
+	
 
 	public Comment[] getComments() {
 		return comments;
@@ -176,5 +183,7 @@ public class CommentController implements Serializable {
 	public void setIdFound(boolean idFound) {
 		this.idFound = idFound;
 	}
+	
+	
 
 }
