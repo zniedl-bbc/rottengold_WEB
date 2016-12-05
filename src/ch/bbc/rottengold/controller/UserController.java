@@ -155,4 +155,10 @@ public class UserController implements Serializable {
 		this.profileImgPath = profileImgPath;
 	}
 
+	public String getProfileImgPathById(int userId) {
+		User userFromId = userBean.getUserById(userId);
+		
+		return userFromId.getUsername() + ".png";
+	}
+
 }
