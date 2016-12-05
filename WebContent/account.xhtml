@@ -6,39 +6,20 @@
 <link rel="stylesheet" type="text/css" href="styles/custom/custom.css" />
 <link rel="stylesheet" type="text/css"
 	href="styles/bootstrap/css/bootstrap.css" />
+	<f:metadata>
+		<f:viewParam name="id" value="#{userController.user.id}"></f:viewParam>
+	</f:metadata>
 </h:head>
 <h:body class="idForBackground">
 	<ui:include src="/header.xhtml" />
-	<div id="fieldContainer">
+	<div class="fieldContainer">
 		<h:form>
-			<h:graphicImage id="profilePic" rendered="#{userController.userLoggedIn}" value="img/profileImg/#{userController.profileImgPath}"/>
+			<h:graphicImage id="profilePic"  value="img/profileImg/#{userController.profileImgPath}"/>
 			<br />
 			<h:outputLabel class="FormulaText" for="email" value="ID:" />
-			<h:outputLabel class="ResultText" for="email"
-				value="#{userController.user.getIdAsString()}" />
-			<br />
-			<h:outputLabel class="FormulaText" for="email" value="E-Mail: " />
-			<h:outputLabel class="ResultText" for="email"
-				value="#{userController.user.getEmail()}" />
-			<br />
-			<h:outputLabel class="FormulaText" for="username" value="Username: " />
-			<h:outputLabel rendered="#{not userController.edditing}"
-				class="ResultText" for="email"
-				value="#{userController.user.getUsername()}" />
-			<h:inputText rendered="#{userController.edditing}"
-				class="ResultText" for="email"
-				value="#{userController.user.username}" />
-			<br />
-			<h:outputLabel class="FormulaText" for="password" value="Passwort: " />
-			<h:outputLabel rendered="#{not userController.edditing}"
-				class="ResultText" for="email"
-				value="#{userController.user.getPassword()}" />
-			<br/>
-			<h:commandButton action="#{userController.switchToEditAccount()}"
-				value="Edit account" />
-
-			<h:commandButton class="deleteAccountButton"
-				action="#{userController.deleteAccount()}" value="Delete account" />
+			<h:outputLabel class="ResultText" for="email" value="#{userController.user.getIdAsString()}" />
+			<hr/>
+				
 		</h:form>
 	</div>
 </h:body>
