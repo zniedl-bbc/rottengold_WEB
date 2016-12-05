@@ -34,10 +34,10 @@ import ch.bbc.rottengold.model.User;
 public class UserController implements Serializable {
 
 	private static final long serialVersionUID = 4401133314893714110L;
-	
+
 	@Inject
 	private User user;
-
+	
 	@EJB
 	private UserBeanLocal userBean;
 
