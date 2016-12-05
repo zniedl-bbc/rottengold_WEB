@@ -34,7 +34,7 @@ import ch.bbc.rottengold.model.User;
 public class UserController implements Serializable {
 
 	private static final long serialVersionUID = 4401133314893714110L;
-
+	
 	@Inject
 	private User user;
 
@@ -87,6 +87,11 @@ public class UserController implements Serializable {
 		}
 
 	}
+	
+	public String showAccountInformation(int userId){
+		return "";
+	}
+	
 
 	public String login() {
 		List<User> tempUser = userBean.checkLogin(user);
@@ -219,5 +224,6 @@ public class UserController implements Serializable {
 
 		return userFromId.getUsername() + ".png";
 	}
+
 
 }
