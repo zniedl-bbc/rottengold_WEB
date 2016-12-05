@@ -11,6 +11,7 @@
 	<ui:include src="/header.xhtml" />
 	<div id="fieldContainer">
 		<h:form>
+			<h:graphicImage id="profilePic" rendered="#{userController.userLoggedIn}" value="img/profileImg/#{userController.profileImgPath}"/>
 			<br />
 			<h:outputLabel class="FormulaText" for="email" value="ID:" />
 			<h:outputLabel class="ResultText" for="email"
