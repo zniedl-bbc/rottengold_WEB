@@ -229,3 +229,8 @@ rename !!! -->.testID {
 	width: 130%;
 	float:left;
 }
+
+#profilePic{
+	width: 10%;
+	height 10%;
+}
