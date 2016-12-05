@@ -3,12 +3,20 @@ package ch.bbc.rottengold.controller;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
+import ch.bbc.rottengold.ejb.CommentBeanLocal;
 import ch.bbc.rottengold.ejb.UserBeanLocal;
 import ch.bbc.rottengold.model.User;
 
@@ -23,6 +31,12 @@ public class UserController implements Serializable {
 
 	@EJB
 	private UserBeanLocal userBean;
+	@EJB
+	private CommentBeanLocal commentBean;
+	
+	@Resource
+	private UserTransaction ut;
+	
 	//flag's
 	private boolean userLoggedIn = false;
 	private boolean usedUsername = false;
@@ -58,7 +72,19 @@ public class UserController implements Serializable {
 
 	}
 	public String deleteAccount(){
-		userBean.deleteAccount(user);
+		try {
+			ut.begin();
+			commentBean.deleteCommentsByUserID(user.getId());
+			userBean.deleteAccount(user);
+			ut.commit();
+		} catch (Exception e) {
+			try {
+				ut.rollback();
+			} catch (Exception e1) {
+				
+			}
+		}
+		
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 	
