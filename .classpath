@@ -12,6 +12,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/RottenGold_EJB"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/RottenGold_JPA"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/BootsFaces-OSP-1.0.0-dist.jar"/>
-	<classpathentry kind="lib" path="D:/Users/zisler/Desktop/primefaces-6.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/primefaces-6.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
