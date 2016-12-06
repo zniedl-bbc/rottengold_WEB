@@ -74,18 +74,11 @@ public class CommentController implements Serializable {
 				idURLParam = 1;
 			}
 			userController.setSearchingForAccount(false);
-			setWebsiteId(idURLParam);
-			comments = null;
-			setComments(commentBean.getCommentsViaWebsite(idURLParam, websiteInfoBean.findBiggestWebsiteId()));
-			if (comments != null) {
-				for (Comment c : comments) {
-					if (c.getId_website() != websiteId)
-						comments = null;
-				}
-			}
+			initCommentsAndInfo(idURLParam);
 
-			editing = false;
-
+		} else {
+			idURLParam = 1;
+			initCommentsAndInfo(idURLParam);
 		}
 		if (idURLParam < websiteInfoBean.findBiggestWebsiteId()) {
 			idFound = true;
@@ -93,6 +86,19 @@ public class CommentController implements Serializable {
 			idFound = false;
 		}
 
+		editing = false;
+	}
+
+	private void initCommentsAndInfo(int idURLParam) {
+		setWebsiteId(idURLParam);
+		comments = null;
+		setComments(commentBean.getCommentsViaWebsite(idURLParam, websiteInfoBean.findBiggestWebsiteId()));
+		if (comments != null) {
+			for (Comment c : comments) {
+				if (c.getId_website() != websiteId)
+					comments = null;
+			}
+		}
 	}
 
 	public boolean isUserCommentWriter(Comment comment) {
