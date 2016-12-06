@@ -12,7 +12,7 @@
 						<h:commandButton
 							image="img/profileImg/#{commentController.getCommentCreatorProfileImg(c.id_user)}"
 							class="commentProfileImg"
-							action="#{userController.showAccountInformation()}">
+							action="#{userController.showAccountInformation}">
 							<f:setPropertyActionListener value="#{c.id_user}"
 								target="#{userController.currentAccount}" />
 						</h:commandButton>

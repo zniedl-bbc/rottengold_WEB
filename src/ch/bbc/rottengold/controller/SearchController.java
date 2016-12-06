@@ -39,7 +39,6 @@ public class SearchController implements Serializable {
 			searchResults = new Website[1];
 			searchResults[0] = new Website("", "", "");
 		}
-		userController.setSearchingForAccount(false);
 		return searchResults;
 	}
 
