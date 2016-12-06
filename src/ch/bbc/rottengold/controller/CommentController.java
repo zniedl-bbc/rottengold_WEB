@@ -24,7 +24,7 @@ public class CommentController implements Serializable {
 
 	@EJB
 	private CommentBeanLocal commentBean;
-	
+
 	@EJB
 	private WebsiteInfoBeanLocal websiteInfoBean;
 
@@ -39,15 +39,14 @@ public class CommentController implements Serializable {
 
 	private Comment toBeEditedComment;
 
-	private boolean idFound;
-	
-	
-
 	@Inject
 	private Comment newComment;
 
 	private Website website;
 
+	
+	//flags
+	private boolean idFound;
 	private boolean editing;
 
 	@PostConstruct
@@ -58,17 +57,22 @@ public class CommentController implements Serializable {
 		idFound = false;
 		if (request.getParameter("id") != null) {
 			idURLParam = Integer.parseInt(request.getParameter("id"));
-		} else if (request.getParameter("id") == "0") {
-			idURLParam = 1;
+			if (idURLParam == 0) {
+				idURLParam = 1;
+			}
 		}
 		setWebsiteId(idURLParam);
 		comments = null;
-		setComments(commentBean.getCommentsViaWebsite(idURLParam, websiteInfoBean.findBiggestWebsiteId(idURLParam)));
+		setComments(commentBean.getCommentsViaWebsite(idURLParam, websiteInfoBean.findBiggestWebsiteId()));
 		if (comments != null) {
-			idFound = true;
 			if (comments[0].getId_website() != websiteId) {
 				comments = null;
 			}
+		}
+		if (idURLParam > websiteInfoBean.findBiggestWebsiteId()){
+			idFound = false;
+		}else{
+			idFound = true;
 		}
 
 		editing = false;
@@ -106,11 +110,10 @@ public class CommentController implements Serializable {
 		commentBean.deleteComment(toBeDeletedComment.getId());
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
-	
-	public String getCommentCreatorProfileImg(int userId){
+
+	public String getCommentCreatorProfileImg(int userId) {
 		return userController.getProfileImgPathById(userId);
 	}
-	
 
 	public Comment[] getComments() {
 		return comments;
@@ -183,7 +186,5 @@ public class CommentController implements Serializable {
 	public void setIdFound(boolean idFound) {
 		this.idFound = idFound;
 	}
-	
-	
 
 }
