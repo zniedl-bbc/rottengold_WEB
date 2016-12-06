@@ -44,8 +44,7 @@ public class CommentController implements Serializable {
 
 	private Website website;
 
-	
-	//flags
+	// flags
 	private boolean idFound;
 	private boolean editing;
 
@@ -60,22 +59,28 @@ public class CommentController implements Serializable {
 			if (idURLParam == 0) {
 				idURLParam = 1;
 			}
-		}
-		setWebsiteId(idURLParam);
-		comments = null;
-		setComments(commentBean.getCommentsViaWebsite(idURLParam, websiteInfoBean.findBiggestWebsiteId()));
-		if (comments != null) {
-			if (comments[0].getId_website() != websiteId) {
-				comments = null;
+			userController.setSearchingForAccount(false);
+			setWebsiteId(idURLParam);
+			comments = null;
+			setComments(commentBean.getCommentsViaWebsite(idURLParam, websiteInfoBean.findBiggestWebsiteId()));
+			if (comments != null) {
+				for (Comment c : comments) {
+					if (c.getId_website() != websiteId)
+						comments = null;
+				}
 			}
+			
+			editing = false;
+
+		} else {
+			userController.setSearchingForAccount(true);
 		}
-		if (idURLParam > websiteInfoBean.findBiggestWebsiteId()){
-			idFound = false;
-		}else{
+		if (idURLParam < websiteInfoBean.findBiggestWebsiteId()) {
 			idFound = true;
+		} else {
+			idFound = false;
 		}
 
-		editing = false;
 	}
 
 	public boolean isUserCommentWriter(Comment comment) {

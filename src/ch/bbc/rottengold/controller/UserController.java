@@ -56,7 +56,7 @@ public class UserController implements Serializable {
 	private boolean usedUsername = false;
 	private boolean edditing = false;
 	private boolean emailSend = false;
-	private boolean searchingForAccount=false;
+	private boolean searchingForAccount = false;
 
 	private String profileImgPath;
 
@@ -94,7 +94,7 @@ public class UserController implements Serializable {
 	
 	public String showAccountInformation(){
 		setSearchingForAccount(true);
-		return "";
+		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
 	public String login() {

@@ -13,16 +13,18 @@
 <h:body class="idForBackground">
 	<ui:include src="/header.xhtml" />
 	<ui:include src="/searchMenu.xhtml" />
-	<h:panelGroup rendered="#{not userController.searchingForAccount}">
-		<h:panelGroup rendered="#{commentController.idFound}">
-			<ui:include src="/websiteInfo.xhtml" />
-			<ui:include src="/commentContainer.xhtml" />
+
+	<h:panelGroup
+		rendered="#{commentController.idFound and not userController.searchingForAccount}">
+		<ui:include src="/websiteInfo.xhtml" />
+		<ui:include src="/commentContainer.xhtml" />
 		<ui:include src="/addComment.xhtml" />
-		</h:panelGroup>
 	</h:panelGroup>
-	<h:panelGroup>
+
+	<h:panelGroup rendered="#{userController.searchingForAccount}">
 		<ui:include src="/account.xhtml"></ui:include>
 	</h:panelGroup>
+	
 	<h:panelGroup rendered="#{not commentController.idFound}">
 		<ui:include src="/error404.xhtml"></ui:include>
 	</h:panelGroup>
