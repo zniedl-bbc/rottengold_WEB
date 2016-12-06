@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import ch.bbc.rottengold.ejb.SearchBeanLocal;
@@ -20,6 +21,9 @@ public class SearchController implements Serializable {
 	@EJB
 	private SearchBeanLocal searchBean;
 
+	@Inject
+	UserController userController;
+	
 	private Website[] searchResults;
 
 	public String switchToAddWebsite() {
@@ -35,6 +39,7 @@ public class SearchController implements Serializable {
 			searchResults = new Website[1];
 			searchResults[0] = new Website("", "", "");
 		}
+		userController.setSearchingForAccount(false);
 		return searchResults;
 	}
 

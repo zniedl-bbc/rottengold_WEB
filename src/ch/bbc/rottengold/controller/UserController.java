@@ -34,9 +34,12 @@ import ch.bbc.rottengold.model.User;
 public class UserController implements Serializable {
 
 	private static final long serialVersionUID = 4401133314893714110L;
+	private int currentAccount;
 
 	@Inject
 	private User user;
+	
+	
 	
 	@EJB
 	private UserBeanLocal userBean;
@@ -53,6 +56,7 @@ public class UserController implements Serializable {
 	private boolean usedUsername = false;
 	private boolean edditing = false;
 	private boolean emailSend = false;
+	private boolean searchingForAccount=false;
 
 	private String profileImgPath;
 
@@ -88,10 +92,10 @@ public class UserController implements Serializable {
 
 	}
 	
-	public String showAccountInformation(int userId){
+	public String showAccountInformation(){
+		setSearchingForAccount(true);
 		return "";
 	}
-	
 
 	public String login() {
 		List<User> tempUser = userBean.checkLogin(user);
@@ -223,6 +227,22 @@ public class UserController implements Serializable {
 		User userFromId = userBean.getUserById(userId);
 
 		return userFromId.getUsername() + ".png";
+	}
+
+	public int getCurrentAccount() {
+		return currentAccount;
+	}
+
+	public void setCurrentAccount(int currentAccount) {
+		this.currentAccount = currentAccount;
+	}
+
+	public boolean isSearchingForAccount() {
+		return searchingForAccount;
+	}
+
+	public void setSearchingForAccount(boolean searchingForAccount) {
+		this.searchingForAccount = searchingForAccount;
 	}
 
 

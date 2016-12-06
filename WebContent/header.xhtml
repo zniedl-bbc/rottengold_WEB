@@ -99,7 +99,7 @@
 						action="#{userController.changePassword}"></b:commandButton>
 				</h:form>
 			</b:dropMenu>
-			<h:graphicImage id="profilePic" rendered="#{userController.userLoggedIn}" value="img/profileImg/#{userController.profileImgPath}"/>
+			<h:graphicImage class="profilePic" rendered="#{userController.userLoggedIn}" value="img/profileImg/#{userController.profileImgPath}"/>
 		</b:navbarLinks>
 	</b:navBar>
 </ui:composition>

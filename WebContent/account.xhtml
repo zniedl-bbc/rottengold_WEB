@@ -1,4 +1,4 @@
-<h:html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
@@ -6,12 +6,8 @@
 <link rel="stylesheet" type="text/css" href="styles/custom/custom.css" />
 <link rel="stylesheet" type="text/css"
 	href="styles/bootstrap/css/bootstrap.css" />
-	<f:metadata>
-		<f:viewParam name="id" value="#{userController.user.id}"></f:viewParam>
-	</f:metadata>
 </h:head>
 <h:body class="idForBackground">
-	<ui:include src="/header.xhtml" />
 	<div class="fieldContainer">
 		<h:form>
 			<h:graphicImage id="profilePic"  value="img/profileImg/#{userController.profileImgPath}"/>
@@ -24,4 +20,4 @@
 	</div>
 </h:body>
 
-</h:html>
+</ui:composition>
