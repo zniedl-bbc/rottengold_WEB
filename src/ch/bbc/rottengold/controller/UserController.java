@@ -27,6 +27,7 @@ import org.primefaces.event.FileUploadEvent;
 
 import ch.bbc.rottengold.ejb.CommentBeanLocal;
 import ch.bbc.rottengold.ejb.UserBeanLocal;
+import ch.bbc.rottengold.model.Comment;
 import ch.bbc.rottengold.model.User;
 
 @Named
@@ -38,9 +39,8 @@ public class UserController implements Serializable {
 
 	@Inject
 	private User user;
-	
-	
-	
+	private User accountviewUser;
+
 	@EJB
 	private UserBeanLocal userBean;
 
@@ -57,8 +57,10 @@ public class UserController implements Serializable {
 	private boolean edditing = false;
 	private boolean emailSend = false;
 	private boolean searchingForAccount = false;
+	private Comment commentForAccountUserView;
 
 	private String profileImgPath;
+	private String profileImgPathFromCurrentUser;
 
 	public String register() {
 		if (emailSend) {
@@ -91,8 +93,10 @@ public class UserController implements Serializable {
 		}
 
 	}
-	
-	public String showAccountInformation(){
+
+	public String showAccountInformation(int userId) {
+		setAccountviewUser(userBean.getUserById(userId));
+		setProfileImgPathFromCurrentUser(getAccountviewUser().getUsername() +".png");
 		setSearchingForAccount(true);
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
@@ -245,5 +249,28 @@ public class UserController implements Serializable {
 		this.searchingForAccount = searchingForAccount;
 	}
 
+	public User getAccountviewUser() {
+		return accountviewUser;
+	}
+
+	public void setAccountviewUser(User accountviewUser) {
+		this.accountviewUser = accountviewUser;
+	}
+
+	public Comment getCommentForAccountUserView() {
+		return commentForAccountUserView;
+	}
+
+	public void setCommentForAccountUserView(Comment commentForAccountUserView) {
+		this.commentForAccountUserView = commentForAccountUserView;
+	}
+
+	public String getProfileImgPathFromCurrentUser() {
+		return profileImgPathFromCurrentUser;
+	}
+
+	public void setProfileImgPathFromCurrentUser(String profileImgPathFromCurrentUser) {
+		this.profileImgPathFromCurrentUser = profileImgPathFromCurrentUser;
+	}
 
 }

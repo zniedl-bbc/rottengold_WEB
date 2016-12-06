@@ -28,7 +28,7 @@ public class CommentController implements Serializable {
 
 	@EJB
 	private WebsiteInfoBeanLocal websiteInfoBean;
-	
+
 	@EJB
 	private UserBeanLocal userBean;
 
@@ -42,6 +42,16 @@ public class CommentController implements Serializable {
 	private Comment toBeDeletedComment;
 
 	private Comment toBeEditedComment;
+
+	private int userIdOfSelectedComment;
+
+	public int getUserIdOfSelectedComment() {
+		return userIdOfSelectedComment;
+	}
+
+	public void setUserIdOfSelectedComment(int userIdOfSelectedComment) {
+		this.userIdOfSelectedComment = userIdOfSelectedComment;
+	}
 
 	@Inject
 	private Comment newComment;
@@ -73,11 +83,9 @@ public class CommentController implements Serializable {
 						comments = null;
 				}
 			}
-			
+
 			editing = false;
 
-		} else {
-			userController.setSearchingForAccount(true);
 		}
 		if (idURLParam < websiteInfoBean.findBiggestWebsiteId()) {
 			idFound = true;
@@ -93,6 +101,11 @@ public class CommentController implements Serializable {
 		}
 
 		return false;
+	}
+
+	public String showAccountInformation() {
+		getUserController().showAccountInformation(getUserIdOfSelectedComment());
+		return "";
 	}
 
 	public String addNewComment() {
