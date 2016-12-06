@@ -8,15 +8,15 @@
 			<div class="comment">
 				<h:outputText value="#{c.title}" class="commentTitle"></h:outputText>
 				<div>
-					<form>
+					<h:form>
 						<h:commandButton
 							image="img/profileImg/#{commentController.getCommentCreatorProfileImg(c.id_user)}"
 							class="commentProfileImg"
-							action="#{userController.showAccountInformation}">
+							action="#{commentController.showAccountInformation}">
 							<f:setPropertyActionListener value="#{c.id_user}"
-								target="#{userController.currentAccount}"   />
+								target="#{commentController.userIdOfSelectedComment}" />
 						</h:commandButton>
-					</form>
+					</h:form>
 				</div>
 				<br /> <br /> <br /> <br />
 				<h:outputText value="#{c.comment}" class="commentText"></h:outputText>

@@ -5,13 +5,13 @@
 
 	<div class="fieldContainer">
 		<h:form>
-			<h:graphicImage id="profilePic"
-				value="img/profileImg/#{userController.profileImgPath}" />
+			<h:graphicImage class="profilePicBig"
+				value="img/profileImg/#{userController.profileImgPathFromCurrentUser}" />
 			<br />
-			<h:outputLabel class="FormulaText" for="email" value="ID:" />
-			<h:outputLabel class="ResultText" for="email"
-				value="#{userController.user.getIdAsString()}" />
+			<h:outputLabel class="FormulaText" value="User - ID:" />
+			<h:outputLabel class="ResultText" value="#{userController.accountviewUser.idAsString}" />
 			<hr />
+			
 
 		</h:form>
 	</div>
