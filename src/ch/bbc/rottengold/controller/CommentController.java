@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.NotFoundException;
 
 import ch.bbc.rottengold.ejb.CommentBeanLocal;
+import ch.bbc.rottengold.ejb.UserBeanLocal;
 import ch.bbc.rottengold.ejb.WebsiteInfoBeanLocal;
 import ch.bbc.rottengold.model.Comment;
 import ch.bbc.rottengold.model.Website;
@@ -27,6 +28,9 @@ public class CommentController implements Serializable {
 
 	@EJB
 	private WebsiteInfoBeanLocal websiteInfoBean;
+	
+	@EJB
+	private UserBeanLocal userBean;
 
 	@Inject
 	private UserController userController;
@@ -91,6 +95,7 @@ public class CommentController implements Serializable {
 		newComment.setId_user(getUserController().getUser().getId());
 		commentBean.addComment(newComment);
 		newComment.clear();
+		userBean.increaseCommentCounter(getUserController().getUser());
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 
 	}
@@ -108,6 +113,7 @@ public class CommentController implements Serializable {
 
 	public String deleteComment() {
 		commentBean.deleteComment(toBeDeletedComment.getId());
+		userBean.decreaseCommentCounter(getUserController().getUser());
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
