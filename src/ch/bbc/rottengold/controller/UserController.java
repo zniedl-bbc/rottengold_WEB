@@ -35,10 +35,10 @@ import ch.bbc.rottengold.model.User;
 public class UserController implements Serializable {
 
 	private static final long serialVersionUID = 4401133314893714110L;
-	private int currentAccount;
 
 	@Inject
 	private User user;
+
 	private User accountviewUser;
 
 	@EJB
@@ -50,6 +50,9 @@ public class UserController implements Serializable {
 	@Resource
 	private UserTransaction ut;
 
+	private int currentAccount;
+	
+	
 	// flag's
 
 	private boolean userLoggedIn = false;
