@@ -23,8 +23,9 @@
 
 	<h:panelGroup rendered="#{userController.searchingForAccount}">
 		<ui:include src="/account.xhtml"></ui:include>
+
 	</h:panelGroup>
-	
+
 	<h:panelGroup rendered="#{not commentController.idFound}">
 		<ui:include src="/error404.xhtml"></ui:include>
 	</h:panelGroup>
