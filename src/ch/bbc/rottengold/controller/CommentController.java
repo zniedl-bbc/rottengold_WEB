@@ -80,7 +80,7 @@ public class CommentController implements Serializable {
 			idURLParam = 1;
 			initCommentsAndInfo(idURLParam);
 		}
-		if (idURLParam < websiteInfoBean.findBiggestWebsiteId()) {
+		if (idURLParam <= websiteInfoBean.findBiggestWebsiteId()) {
 			idFound = true;
 		} else {
 			idFound = false;
