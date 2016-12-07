@@ -33,18 +33,14 @@ public class WebsiteInfoController implements Serializable {
 
 	private Rating ratingFromUser;
 
-	public Rating getRatingFromUser() {
-		return ratingFromUser;
-	}
-
-	public void setRatingFromUser(Rating ratingFromUser) {
-		this.ratingFromUser = ratingFromUser;
-	}
-
 	private boolean ratingAvailable;
 
 	private Rating[] allRatingsForCurrentWebsite;
 
+	/**
+	 * This function is used to initialize the website info whenever this view
+	 * is called
+	 */
 	@PostConstruct
 	public void init() {
 		if (commentController.getWebsiteId() == 0) {
@@ -119,4 +115,11 @@ public class WebsiteInfoController implements Serializable {
 		this.allRatingsForCurrentWebsite = allRatingsForCurrentWebsite;
 	}
 
+	public Rating getRatingFromUser() {
+		return ratingFromUser;
+	}
+
+	public void setRatingFromUser(Rating ratingFromUser) {
+		this.ratingFromUser = ratingFromUser;
+	}
 }

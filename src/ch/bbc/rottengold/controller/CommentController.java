@@ -45,14 +45,6 @@ public class CommentController implements Serializable {
 
 	private int userIdOfSelectedComment;
 
-	public int getUserIdOfSelectedComment() {
-		return userIdOfSelectedComment;
-	}
-
-	public void setUserIdOfSelectedComment(int userIdOfSelectedComment) {
-		this.userIdOfSelectedComment = userIdOfSelectedComment;
-	}
-
 	@Inject
 	private Comment newComment;
 
@@ -62,6 +54,10 @@ public class CommentController implements Serializable {
 	private boolean idFound;
 	private boolean editing;
 
+	/**
+	 * This function is called whenever the CommentController is called in a new
+	 * view and initializes the id for the initCommentsAndInfo function
+	 */
 	@PostConstruct
 	public void init() {
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
@@ -89,6 +85,13 @@ public class CommentController implements Serializable {
 		editing = false;
 	}
 
+	/**
+	 * This function is used to initialize all the comments from the database
+	 * whenever this controller is called as a new view
+	 * 
+	 * @param idURLParam
+	 *            id to get comments from database
+	 */
 	private void initCommentsAndInfo(int idURLParam) {
 		setWebsiteId(idURLParam);
 		comments = null;
@@ -101,6 +104,15 @@ public class CommentController implements Serializable {
 		}
 	}
 
+	/**
+	 * This function checks whether the logged in user is the writer of a
+	 * comment or not
+	 * 
+	 * @param comment
+	 *            to be checked comment
+	 * 
+	 * @return returns result of check
+	 */
 	public boolean isUserCommentWriter(Comment comment) {
 		if (userController.getUser().getId() == comment.getId_user()) {
 			return true;
@@ -109,11 +121,23 @@ public class CommentController implements Serializable {
 		return false;
 	}
 
+	/**
+	 * This function is used to get user information from the UserController
+	 * with the user id
+	 * 
+	 * @return returns empty string because the view shouldn't change
+	 */
 	public String showAccountInformation() {
 		getUserController().showAccountInformation(getUserIdOfSelectedComment());
 		return "";
 	}
 
+	/**
+	 * This function is used to add a new comment
+	 * 
+	 * @return This return string is used that the mainFrame uses the same
+	 *         website id again
+	 */
 	public String addNewComment() {
 		newComment.setId_website(getWebsiteId());
 		newComment.setId_user(getUserController().getUser().getId());
@@ -135,6 +159,12 @@ public class CommentController implements Serializable {
 		return null;
 	}
 
+	/**
+	 * This function is used to delete a comment
+	 * 
+	 * @return This return string is used that the mainFrame uses the same
+	 *         website id again
+	 */
 	public String deleteComment() {
 		commentBean.deleteComment(toBeDeletedComment.getId());
 		userBean.decreaseCommentCounter(getUserController().getUser());
@@ -215,6 +245,14 @@ public class CommentController implements Serializable {
 
 	public void setIdFound(boolean idFound) {
 		this.idFound = idFound;
+	}
+
+	public int getUserIdOfSelectedComment() {
+		return userIdOfSelectedComment;
+	}
+
+	public void setUserIdOfSelectedComment(int userIdOfSelectedComment) {
+		this.userIdOfSelectedComment = userIdOfSelectedComment;
 	}
 
 }

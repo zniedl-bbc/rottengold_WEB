@@ -23,13 +23,12 @@ public class SearchController implements Serializable {
 
 	@Inject
 	UserController userController;
-	
+
 	private Website[] searchResults;
 
-	public String switchToAddWebsite() {
-		return "/addWebsite";
-	}
-
+	/**
+	 * This function searches for websites with the searchInput
+	 */
 	public void searchWebsite() {
 		searchResults = searchBean.searchWebsite(searchInput);
 	}

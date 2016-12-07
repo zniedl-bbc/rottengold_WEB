@@ -51,8 +51,7 @@ public class UserController implements Serializable {
 	private UserTransaction ut;
 
 	private int currentAccount;
-	
-	
+
 	// flag's
 
 	private boolean userLoggedIn = false;
@@ -65,6 +64,12 @@ public class UserController implements Serializable {
 	private String profileImgPath;
 	private String profileImgPathFromCurrentUser;
 
+	/**
+	 * This function is used to register the cached user
+	 * 
+	 * @return This return string is used that the mainFrame uses the same
+	 *         website id again
+	 */
 	public String register() {
 		if (emailSend) {
 			userBean.registerUser(user);
@@ -83,6 +88,12 @@ public class UserController implements Serializable {
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
+	/**
+	 * This function is used to used to upload profile pictures
+	 * 
+	 * @param event
+	 *            needed to get the inputstream
+	 */
 	public void handleFileUpload(FileUploadEvent event) {
 		try {
 			InputStream inputStream = event.getFile().getInputstream();
@@ -97,13 +108,27 @@ public class UserController implements Serializable {
 
 	}
 
+	/**
+	 * This function sets all the info needed to display the searched user
+	 * account
+	 * 
+	 * @param userId searched user
+	 * @return This return string is used that the mainFrame uses the same
+	 *         website id again
+	 */
 	public String showAccountInformation(int userId) {
 		setAccountviewUser(userBean.getUserById(userId));
-		setProfileImgPathFromCurrentUser(getAccountviewUser().getUsername() +".png");
+		setProfileImgPathFromCurrentUser(getAccountviewUser().getUsername() + ".png");
 		setSearchingForAccount(true);
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
+	/**
+	 * This function is used to log the user in
+	 * 
+	 * @return This return string is used that the mainFrame uses the same
+	 *         website id again
+	 */
 	public String login() {
 		List<User> tempUser = userBean.checkLogin(user);
 		if (tempUser == null || tempUser.isEmpty()) {
@@ -116,6 +141,12 @@ public class UserController implements Serializable {
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
+	/**
+	 * This function is used to log the user out. Invalidates the session
+	 * 
+	 * @return This return string is used that the mainFrame uses the same
+	 *         website id again
+	 */
 	public String logout() {
 		setUserLoggedIn(false);
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
@@ -123,6 +154,12 @@ public class UserController implements Serializable {
 
 	}
 
+	/**
+	 * This function is used to delete the current logged in user account
+	 * 
+	 * @return This return string is used that the mainFrame uses the same
+	 *         website id again
+	 */
 	public String deleteAccount() {
 		try {
 			ut.begin();
@@ -140,11 +177,23 @@ public class UserController implements Serializable {
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
+	/**
+	 * This function is used to change the password
+	 * 
+	 * @return This return string is used that the mainFrame uses the same
+	 *         website id again
+	 */
 	public String changePassword() {
 		userBean.changePassword(user);
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
+	
+	/**
+	 * This function sends a confirmation email to the given email
+	 * 
+	 * @param email to email
+	 */
 	public void sendConfirmationEmail(String email) {
 		// Recipient's email ID needs to be mentioned.
 		String to = email;

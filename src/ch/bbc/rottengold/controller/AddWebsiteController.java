@@ -28,8 +28,12 @@ public class AddWebsiteController implements Serializable {
 	String errorMsg = "";
 	Boolean failure = false;
 
+	/**
+	 * This function is used to add a new website to the database
+	 * 
+	 */
 	public void addWebsite() {
-		String protocol =  "https://";
+		String protocol = "https://";
 		boolean nameAllreadyExists = addWebsiteBean.getTitleByName(website);
 		if (checkURLHTTP(website.getUrl())) {
 			protocol = "http://";
@@ -47,6 +51,15 @@ public class AddWebsiteController implements Serializable {
 		}
 	}
 
+	/**
+	 * This function checks whether the input website-name matches the given URL
+	 * 
+	 * @param uncheckedname
+	 *            Website-name to check
+	 * @param checkedURL
+	 *            URL to check
+	 * @return true if check succeeded
+	 */
 	private boolean checkNameAndUrlEquality(String uncheckedname, String checkedURL) {
 		String websiteNameFromUrl = "";
 		int iterator = 0;
@@ -69,28 +82,40 @@ public class AddWebsiteController implements Serializable {
 		return false;
 	}
 
+	/**
+	 * This function checks whether the the given URL can connect with the HTTP
+	 * protocol
+	 * 
+	 * @param uncheckedURL
+	 *            URL for connection test
+	 * @return returns true if the URL could connect
+	 */
 	private boolean checkURLHTTP(String uncheckedURL) {
 		String url = "http://" + uncheckedURL;
-
-		HttpURLConnection connection;
-		try {
-			connection = (HttpURLConnection) new URL(url).openConnection();
-			connection.setRequestMethod("HEAD");
-			int responseCode = connection.getResponseCode();
-
-			if (responseCode != 200) {
-				return false;
-			}
-		} catch (IOException e) {
-			return false;
-		}
-
-		return true;
+		return checkCode(url);
 	}
 
+	/**
+	 * This function checks whether the the given URL can connect with the HTTPS
+	 * protocol
+	 * 
+	 * @param uncheckedURL
+	 *            URL for connection test
+	 * @return returns true if the URL could connect
+	 */
 	private boolean checkURLHTTPS(String uncheckedURL) {
 		String url = "https://" + uncheckedURL;
+		return checkCode(url);
+	}
 
+	/**
+	 * This function checks whether the the given URL can connect
+	 * 
+	 * @param uncheckedURL
+	 *            URL for connection test
+	 * @return returns true if the URL could connect
+	 */
+	private boolean checkCode(String url) {
 		HttpURLConnection connection;
 		try {
 			connection = (HttpURLConnection) new URL(url).openConnection();
@@ -107,6 +132,7 @@ public class AddWebsiteController implements Serializable {
 		return true;
 	}
 
+	
 	private boolean switchFlag(boolean startForNameFiltering) {
 		if (startForNameFiltering) {
 			return false;
