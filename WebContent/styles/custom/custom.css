@@ -221,7 +221,7 @@ rename !!! -->.testID {
 	font-size: 20px;
 	margin-left: 100px;
 }
-
+ 
 #error404Img {
 	height: 70%;
 	width: 130%;
@@ -241,7 +241,7 @@ rename !!! -->.testID {
 	max-height: 100px;
 	margin-bottom: 15px;
 	margin-top: 12px;
-	float: left;
+	margin-left: auto;
 
 }
 .commentProfileImg {
