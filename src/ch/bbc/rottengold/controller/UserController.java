@@ -224,7 +224,7 @@ public class UserController implements Serializable {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
 			// Set Subject: header field
-			message.setSubject("This is the Subject Line!");
+			message.setSubject("Confirm your Email!");
 
 			// Now set the actual message
 			message.setText("Confirm your E-Mail via this link:");
