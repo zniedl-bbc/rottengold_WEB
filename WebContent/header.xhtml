@@ -14,13 +14,13 @@
 			style="width: 300px; height: 75px; float: left;" /></a>
 		<b:navbarLinks pull="right">
 			<b:dropMenu rendered="#{userController.userLoggedIn}"
-				class="navButtons" value="Change Your Profile Picture" style="color: white">
+				class="navButtons" value="Change Your Profile Picture"
+				style="color: white">
 				<h:form class="login-form">
 					<p:fileUpload
 						fileUploadListener="#{userController.handleFileUpload}"
-						mode="advanced" dragDropSupport="true" 
-						sizeLimit="10000000000000000" 
-						allowTypes="/(\.|\/)(jpe?g|png)$/" />
+						mode="advanced" dragDropSupport="true"
+						sizeLimit="10000000000000000" allowTypes="/(\.|\/)(jpe?g|png)$/" />
 
 				</h:form>
 			</b:dropMenu>
@@ -99,7 +99,9 @@
 						action="#{userController.changePassword}"></b:commandButton>
 				</h:form>
 			</b:dropMenu>
-			<h:graphicImage class="profilePic" rendered="#{userController.userLoggedIn}" value="img/profileImg/#{userController.profileImgPath}"/>
+			<h:graphicImage class="profilePic"
+				rendered="#{userController.userLoggedIn}"
+				value="img/profileImg/#{userController.profileImgPath}" />
 		</b:navbarLinks>
 	</b:navBar>
 </ui:composition>
