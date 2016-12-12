@@ -26,6 +26,7 @@ import javax.transaction.UserTransaction;
 import org.primefaces.event.FileUploadEvent;
 
 import ch.bbc.rottengold.ejb.CommentBeanLocal;
+import ch.bbc.rottengold.ejb.RatingBeanLocal;
 import ch.bbc.rottengold.ejb.UserBeanLocal;
 import ch.bbc.rottengold.model.Comment;
 import ch.bbc.rottengold.model.User;
@@ -46,6 +47,9 @@ public class UserController implements Serializable {
 
 	@EJB
 	private CommentBeanLocal commentBean;
+	
+	@EJB
+	private RatingBeanLocal ratingBean;
 
 	@Resource
 	private UserTransaction ut;
@@ -165,6 +169,7 @@ public class UserController implements Serializable {
 			ut.begin();
 			commentBean.deleteCommentsByUserID(user.getId());
 			userBean.deleteAccount(user);
+			ratingBean.deleteRating(user.getId());
 			ut.commit();
 		} catch (Exception e) {
 			try {

@@ -154,12 +154,6 @@
 	text-align: center;
 }
 
-<!--
-rename !!! -->.testID {
-	width: 350px;
-	margin-bottom: 25px;
-}
-
 #submitButtonContainer {
 	width: auto;
 	float: rigth;
@@ -171,6 +165,7 @@ rename !!! -->.testID {
 	float: left;
 	margin: 15px 30% 0 370px;
 	display: table;
+	width: 780px;
 }
 
 .titleAndDescription {
