@@ -102,6 +102,7 @@ public class UserController implements Serializable {
 		try {
 			InputStream inputStream = event.getFile().getInputstream();
 			File uploads = new File("D:\\Users\\zniedl\\Rotten-Gold\\RottenGold_WEB\\WebContent\\img\\profileImg");
+			File uploads = new File("D:\\Users\\zisler\\Rotten-Gold\\RottenGold_WEB\\WebContent\\img\\profileImg");
 			File file = new File(uploads, user.getUsername() + ".png");
 
 			Files.copy(inputStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
