@@ -178,7 +178,7 @@ public class UserController implements Serializable {
 
 			}
 		}
-
+		logout();
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
