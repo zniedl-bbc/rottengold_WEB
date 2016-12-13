@@ -1,8 +1,9 @@
 package ch.bbc.rottengold.controller;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -11,14 +12,12 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.NotFoundException;
 
 import ch.bbc.rottengold.ejb.CommentBeanLocal;
 import ch.bbc.rottengold.ejb.UserBeanLocal;
 import ch.bbc.rottengold.ejb.WebsiteInfoBeanLocal;
 import ch.bbc.rottengold.model.Comment;
 import ch.bbc.rottengold.model.Website;
-import jersey.repackaged.com.google.common.collect.Lists;
 
 @Named
 @ViewScoped
@@ -166,6 +165,9 @@ public class CommentController implements Serializable {
 	public String addNewComment() {
 		newComment.setId_website(getWebsiteId());
 		newComment.setId_user(getUserController().getUser().getId());
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		newComment.setCreationDate(dateFormat.format(date));
 		commentBean.addComment(newComment);
 		newComment.clear();
 		userBean.increaseCommentCounter(getUserController().getUser());

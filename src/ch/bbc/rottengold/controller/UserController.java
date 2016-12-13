@@ -47,7 +47,7 @@ public class UserController implements Serializable {
 
 	@EJB
 	private CommentBeanLocal commentBean;
-	
+
 	@EJB
 	private RatingBeanLocal ratingBean;
 
@@ -278,7 +278,7 @@ public class UserController implements Serializable {
 	}
 
 	public String getProfileImgPath() {
-		return user.getUsername() + ".png";
+		return getProfileImgPathById(user.getId());
 	}
 
 	public void setProfileImgPath(String profileImgPath) {
@@ -287,8 +287,13 @@ public class UserController implements Serializable {
 
 	public String getProfileImgPathById(int userId) {
 		User userFromId = userBean.getUserById(userId);
-
-		return userFromId.getUsername() + ".png";
+		profileImgPathFromCurrentUser = userFromId.getUsername() + ".png";
+		File f = new File("D:\\Users\\zniedl\\Rotten-Gold\\RottenGold_WEB\\WebContent\\img\\profileImg\\"
+				+ profileImgPathFromCurrentUser);
+		if (!f.exists()) {
+			profileImgPathFromCurrentUser = "default.png";
+		}
+		return profileImgPathFromCurrentUser;
 	}
 
 	public int getCurrentAccount() {
