@@ -102,6 +102,16 @@
 	color: black;
 	font-style: italic;
 }
+.commentTitleInput{
+	margin-bottom: 5px;
+	width: 371px;
+	max-width: 371px;
+}
+
+.commentInput{
+	width: 371px;
+	max-width: 371px;
+}
 
 .comment {
 	border: solid;
@@ -114,26 +124,35 @@
 
 .commentTitle {
 	font-size: 30px;
-	margin: 15px 0 0 25px;
+	margin: 15px 50px 0 25px;
 	padding: 5px;
 	float: left;
 }
 
 .commentText {
 	font-size: 13px;
-	padding: 5px;
-	margin-left: 25px;
-	float: left;
+  	float: left;
+    margin-left: 35px;
+    padding: 5px;
+    width:	329px;
+}
+.commentDate{
+	font-size: 13px;
+	margin-left: 35px;
+    float: left;
+    padding: 5px;
 }
 
 .commentButtonsContainer {
-	float: right;
 	width: 146px;
+	margin: 25px 25px 25px 35px;
 }
 
 .commentButtons {
 	width: 147px;
 	padding: 1 6 1 6;
+	float: left;
+	margin: 0px 0px 5px 0px;
 }
 
 .errorText {

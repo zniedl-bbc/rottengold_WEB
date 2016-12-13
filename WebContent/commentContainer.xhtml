@@ -18,10 +18,8 @@
 						</h:commandButton>
 					</h:form>
 				</div>
-				<br /> <br /> <br /> <br />
 				<h:outputText value="#{c.comment}" class="commentText" />
-				<br />
-				<h:outputText value="#{c.creationdate}" class="commentText"/>
+				<h:outputText value="#{c.creationdate}" class="commentDate"/>
 				<div class="commentButtonsContainer">
 					<h:form rendered="#{commentController.isUserCommentWriter(c)}">
 						<h:commandButton value="Edit this comment"
@@ -30,7 +28,6 @@
 							<f:setPropertyActionListener value="#{c}"
 								target="#{commentController.toBeEditedComment}" />
 						</h:commandButton>
-						<br />
 						<h:commandButton value="Delete this comment"
 							action="#{commentController.deleteComment}"
 							class="commentButtons">
