@@ -61,7 +61,6 @@ public class UserController implements Serializable {
 	private boolean userLoggedIn = false;
 	private boolean usedUsername = false;
 	private boolean edditing = false;
-	private boolean emailSend = false;
 	private boolean searchingForAccount = false;
 	private Comment commentForAccountUserView;
 
@@ -76,20 +75,20 @@ public class UserController implements Serializable {
 	 *         website id again
 	 */
 	public String register() {
-		if (emailSend) {
-			userBean.registerUser(user);
-		} else if (!emailSend) {
-			int result = userBean.checkIfUserAlreadyExists(user);
-			if (result == 0) {
-				setUsedUsername(false);
-				sendConfirmationEmail(user.getEmail());
-				emailSend = true;
 
-			} else {
-				setUsedUsername(true);
-
-			}
+		int result = userBean.checkIfUserAlreadyExists(user);
+		if (result == 0) {
+			setUsedUsername(false);
+			sendConfirmationEmail(user.getEmail());
+		} else {
+			setUsedUsername(true);
 		}
+
+		return "mainFrame?faces-redirect=true&includeViewParams=true";
+	}
+
+	public String confirmRegister() {
+		userBean.registerUser(user);	
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
