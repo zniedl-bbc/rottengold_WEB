@@ -65,6 +65,7 @@ public class UserController implements Serializable {
 	private boolean searchingForAccount = false;
 	private Comment commentForAccountUserView;
 
+	@SuppressWarnings("unused")
 	private String profileImgPath;
 	private String profileImgPathFromCurrentUser;
 
