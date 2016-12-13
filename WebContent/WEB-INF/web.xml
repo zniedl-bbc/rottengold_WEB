@@ -16,4 +16,8 @@
 	<session-config>
 		<session-timeout>60</session-timeout>
 	</session-config>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error404Page.xhtml</location>
+	</error-page>
 </web-app>
