@@ -1,6 +1,8 @@
 package ch.bbc.rottengold.controller;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -16,6 +18,7 @@ import ch.bbc.rottengold.ejb.UserBeanLocal;
 import ch.bbc.rottengold.ejb.WebsiteInfoBeanLocal;
 import ch.bbc.rottengold.model.Comment;
 import ch.bbc.rottengold.model.Website;
+import jersey.repackaged.com.google.common.collect.Lists;
 
 @Named
 @ViewScoped
@@ -101,7 +104,29 @@ public class CommentController implements Serializable {
 				if (c.getId_website() != websiteId)
 					comments = null;
 			}
+			comments = reverseComments(comments);
 		}
+	}
+
+	/**
+	 * This function reverses all the comments that the newest comment is the
+	 * first in the array
+	 * 
+	 * @param comments
+	 *            Array to reverse
+	 * @return Reversed array
+	 */
+	private Comment[] reverseComments(Comment[] comments) {
+		Comment[] tempCommentArray = comments;
+		int counter = 0;
+		int counterForExchange = comments.length;
+		comments = new Comment[tempCommentArray.length];
+		while (counter != comments.length) {
+			counterForExchange--;
+			comments[counter] = tempCommentArray[counterForExchange];
+			counter++;
+		}
+		return comments;
 	}
 
 	/**

@@ -116,7 +116,8 @@ public class UserController implements Serializable {
 	 * This function sets all the info needed to display the searched user
 	 * account
 	 * 
-	 * @param userId searched user
+	 * @param userId
+	 *            searched user
 	 * @return This return string is used that the mainFrame uses the same
 	 *         website id again
 	 */
@@ -193,11 +194,11 @@ public class UserController implements Serializable {
 		return "mainFrame?faces-redirect=true&includeViewParams=true";
 	}
 
-	
 	/**
 	 * This function sends a confirmation email to the given email
 	 * 
-	 * @param email to email
+	 * @param email
+	 *            to email
 	 */
 	public void sendConfirmationEmail(String email) {
 		// Recipient's email ID needs to be mentioned.
