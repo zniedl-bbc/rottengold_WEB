@@ -102,7 +102,9 @@ public class CommentController implements Serializable {
 			for (Comment c : comments) {
 				if (c.getId_website() != websiteId)
 					comments = null;
-			}
+			}	
+		}
+		if (comments != null){
 			comments = reverseComments(comments);
 		}
 	}
@@ -167,7 +169,7 @@ public class CommentController implements Serializable {
 		newComment.setId_user(getUserController().getUser().getId());
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
-		newComment.setCreationDate(dateFormat.format(date));
+		newComment.setCreationdate(dateFormat.format(date));
 		commentBean.addComment(newComment);
 		newComment.clear();
 		userBean.increaseCommentCounter(getUserController().getUser());
