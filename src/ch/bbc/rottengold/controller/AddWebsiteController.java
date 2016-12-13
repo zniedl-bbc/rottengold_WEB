@@ -45,7 +45,6 @@ public class AddWebsiteController implements Serializable {
 			if (checkNameAndUrlEquality(website.getName(), website.getUrl())) {
 				{
 					addWebsiteBean.addWebsite(website);
-					System.out.println("You've done it");
 				}
 			}
 		}
