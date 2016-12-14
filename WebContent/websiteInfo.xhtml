@@ -5,17 +5,16 @@
 
 	<div class="websiteInfo">
 		<div class="rating">
-			<ui:include src="rating.xhtml"/>
+			<ui:include src="rating.xhtml" />
 		</div>
-		<div class="titleAndDescription">
-			<div class="websiteTitle">
-				<h:outputText value="#{websiteInfoController.currentWebsite.name}"></h:outputText>
-			</div>
-			<div class="websiteDescription">
-				<h:outputText
-					value="#{websiteInfoController.currentWebsite.description}"></h:outputText>
-			</div>
+		<div class="websiteTitle">
+			<h:outputText value="#{websiteInfoController.currentWebsite.name}"></h:outputText>
 		</div>
+		<div class="websiteDescription">
+			<h:outputText
+				value="#{websiteInfoController.currentWebsite.description}"></h:outputText>
+		</div>
+
 		<div class="websiteUrl">
 			<h:outputLink value="#{websiteInfoController.currentWebsite.url}">
 				<h:outputText value="Go To Website" />

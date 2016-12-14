@@ -103,6 +103,7 @@ public class UserController implements Serializable {
 		try {
 			InputStream inputStream = event.getFile().getInputstream();
 			File uploads = new File(PATH);
+
 			File file = new File(uploads, user.getUsername() + ".png");
 
 			Files.copy(inputStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
@@ -329,7 +330,7 @@ public class UserController implements Serializable {
 	}
 
 	public String getProfileImgPathFromCurrentUser() {
-		return profileImgPathFromCurrentUser;
+		return getProfileImgPathById(accountviewUser.getId());
 	}
 
 	public void setProfileImgPathFromCurrentUser(String profileImgPathFromCurrentUser) {

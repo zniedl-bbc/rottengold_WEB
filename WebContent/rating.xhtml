@@ -45,8 +45,9 @@
 				rendered="#{websiteInfoController.ratingAvailable(4.5)}"
 				action="#{websiteInfoController.setStarRatingForUser(5)}"></h:commandButton>
 
+
 		</b:form>
-		<h:outputText value="This is the average rating:"></h:outputText>
+		<h:outputText value="Average rating: "></h:outputText>
 		<h:outputText value="#{websiteInfoController.averageRating}" />
 	</div>
 </ui:composition>
