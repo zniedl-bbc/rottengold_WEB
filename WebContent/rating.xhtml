@@ -1,9 +1,10 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<div>
-		<h:form rendered="#{userController.userLoggedIn}">
+		<b:form rendered="#{userController.userLoggedIn}">
 			<h:commandButton class="goldbar" image="img/goldbarrenleer.png"
 				rendered="#{not websiteInfoController.ratingAvailable(0.5)}"
 				action="#{websiteInfoController.setStarRatingForUser(1)}"></h:commandButton>
@@ -44,7 +45,7 @@
 				rendered="#{websiteInfoController.ratingAvailable(4.5)}"
 				action="#{websiteInfoController.setStarRatingForUser(5)}"></h:commandButton>
 
-		</h:form>
+		</b:form>
 		<h:outputText value="This is the average rating:"></h:outputText>
 		<h:outputText value="#{websiteInfoController.averageRating}" />
 	</div>

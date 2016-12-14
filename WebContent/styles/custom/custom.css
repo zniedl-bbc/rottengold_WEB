@@ -26,6 +26,11 @@
 .loginbutton {
 	margin-left: 5px;
 }
+.confirmbutton{
+	margin-left: auto;
+    background-color: green;
+    color: white;
+}
 
 .icon {
 	color: black;
@@ -117,9 +122,10 @@
 	border: solid;
 	border-color: black;
 	float: left;
-	margin: 15px 0 0 20px;
+	margin: 15px 0 0 35px;
 	padding: 0 500px 0 auto;
 	width: 380px;
+	background-color: white;
 }
 
 .commentTitle {
@@ -182,9 +188,10 @@
 .websiteInfo {
 	border: solid;
 	float: left;
-	margin: 15px 30% 0 370px;
+	margin: 15px 30% 0 385px;
 	display: table;
 	width: 780px;
+	background-color: white;
 }
 
 .titleAndDescription {
@@ -219,6 +226,7 @@
 #commentContainer {
 	width: 800px;
 	margin-left: 350px;
+	background-color: white;
 }
 
 .goldbar {

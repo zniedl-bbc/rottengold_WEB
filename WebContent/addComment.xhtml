@@ -1,42 +1,42 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 	<div id="addComment">
-		<h:form rendered="#{userController.userLoggedIn}">
+		<b:form rendered="#{userController.userLoggedIn}">
 			<h:outputText value="Add new Comment here" />
 			<br />
 
 
-			<h:inputText class="commentTitleInput"
+			<b:inputText class="commentTitleInput"
 				value="#{commentController.newComment.title}" required="true"
-				rendered="#{not commentController.editing}"></h:inputText>
+				rendered="#{not commentController.editing}"></b:inputText>
 			<br />
-			<h:inputTextarea class="commentInput"
+			<b:inputTextarea class="commentInput"
 				value="#{commentController.newComment.comment}" rows="12" cols="50"
-				required="true" rendered="#{not commentController.editing}"></h:inputTextarea>
+				required="true" rendered="#{not commentController.editing}"></b:inputTextarea>
 
 
-			<h:inputText class="commentTitleInput"
+			<b:inputText class="commentTitleInput"
 				value="#{commentController.toBeEditedComment.title}" required="true"
-				rendered="#{commentController.editing}"></h:inputText>
+				rendered="#{commentController.editing}"></b:inputText>
 			<br />
-			<h:inputTextarea class="commentInput"
+			<b:inputTextarea class="commentInput"
 				value="#{commentController.toBeEditedComment.comment}" rows="12"
-				cols="50" required="true" rendered="#{commentController.editing}"></h:inputTextarea>
-
+				cols="50" required="true" rendered="#{commentController.editing}"></b:inputTextarea>
 
 
 			<h:message errorStyle="color:red; display:block"
 				for="errorMessageAddComment" />
-			<h:commandButton action="#{commentController.addNewComment}"
+			<b:commandButton action="#{commentController.addNewComment}"
 				value="Add Comment" rendered="#{not commentController.editing}">
 				<f:param name="id" value="#{commentController.websiteId}" />
-			</h:commandButton>
-			<h:commandButton action="#{commentController.editComment}"
+			</b:commandButton>
+			<b:commandButton action="#{commentController.editComment}"
 				value="Edit Comment" rendered="#{commentController.editing}">
-			</h:commandButton>
-		</h:form>
+			</b:commandButton>
+		</b:form>
 	</div>
 </ui:composition>
