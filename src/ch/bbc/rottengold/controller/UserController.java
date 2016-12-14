@@ -63,6 +63,7 @@ public class UserController implements Serializable {
 	private boolean edditing = false;
 	private boolean searchingForAccount = false;
 	private Comment commentForAccountUserView;
+	private final String PATH = "D:\\Users\\zisler\\Rotten-Gold\\RottenGold_WEB\\WebContent\\img\\profileImg";
 
 	@SuppressWarnings("unused")
 	private String profileImgPath;
@@ -101,7 +102,7 @@ public class UserController implements Serializable {
 	public void handleFileUpload(FileUploadEvent event) {
 		try {
 			InputStream inputStream = event.getFile().getInputstream();
-			File uploads = new File("D:\\Users\\zisler\\Rotten-Gold\\RottenGold_WEB\\WebContent\\img\\profileImg");
+			File uploads = new File(PATH);
 			File file = new File(uploads, user.getUsername() + ".png");
 
 			Files.copy(inputStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
@@ -288,8 +289,7 @@ public class UserController implements Serializable {
 	public String getProfileImgPathById(int userId) {
 		User userFromId = userBean.getUserById(userId);
 		profileImgPathFromCurrentUser = userFromId.getUsername() + ".png";
-		File f = new File("D:\\Users\\zniedl\\Rotten-Gold\\RottenGold_WEB\\WebContent\\img\\profileImg\\"
-				+ profileImgPathFromCurrentUser);
+		File f = new File(PATH);
 		if (!f.exists()) {
 			profileImgPathFromCurrentUser = "default.png";
 		}
