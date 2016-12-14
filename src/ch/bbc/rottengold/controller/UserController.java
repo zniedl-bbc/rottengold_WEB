@@ -329,7 +329,7 @@ public class UserController implements Serializable {
 	}
 
 	public String getProfileImgPathFromCurrentUser() {
-		return profileImgPathFromCurrentUser;
+		return getProfileImgPathById(accountviewUser.getId());
 	}
 
 	public void setProfileImgPathFromCurrentUser(String profileImgPathFromCurrentUser) {
