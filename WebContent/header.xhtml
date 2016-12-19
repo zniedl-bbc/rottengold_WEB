@@ -34,10 +34,10 @@
 					<b:inputText required="true" class="inputfield"
 						value="#{addWebsiteController.website.url}"></b:inputText>
 					<h:outputText class="icon" value="Sitename"></h:outputText>
-					<b:inputText required="true" class="inputfield"
+					<b:inputText required="true" maxlength="25" class="inputfield"
 						value="#{addWebsiteController.website.name}"></b:inputText>
 					<h:outputText class="icon" value="Description"></h:outputText>
-					<b:inputTextarea required="true" class="inputfield"
+					<b:inputTextarea maxlength="250" required="true" class="inputfield"
 						value="#{addWebsiteController.website.description}"></b:inputTextarea>
 					<b:commandButton class="loginbutton" value="Submit"
 						action="#{addWebsiteController.addWebsite()}"></b:commandButton>
@@ -75,15 +75,13 @@
 				class="navButtons" value="Sign Up" style="color: white">
 				<h:form class="login-form" onclick="return checkFormRegister(this);">
 					<b:icon class="icon" name="envelope"></b:icon>
-					<b:inputText name="email" class="inputfield"
+					<b:inputText name="email" class="inputfield" maxlength="50"
 						value="#{userController.user.email}"></b:inputText>
 					<b:icon class="icon" name="user"></b:icon>
-					<b:inputText name="username" class="inputfield"
+					<b:inputText name="username" class="inputfield" maxlength="50"
 						value="#{userController.user.username}"></b:inputText>
 					<b:icon class="icon" name="lock"></b:icon>
-					<b:inputSecret name="pwd1" class="inputfield"
-						value="#{userController.user.password}"></b:inputSecret>
-					<b:inputSecret name="pwd2" class="inputfield"
+					<b:inputSecret name="pwd1" class="inputfield" maxlength="50"
 						value="#{userController.user.password}"></b:inputSecret>
 					<b:commandButton class="registerbutton"
 						action="#{userController.register()}" value="Register" />
@@ -93,7 +91,7 @@
 				class="navButtons" value="Change Password" style="color: white">
 				<h:form class="login-form">
 					<h:outputText class="icon" value="New Password"></h:outputText>
-					<b:inputText required="true" class="inputfield"
+					<b:inputText required="true" class="inputfield" maxlength="50"
 						value="#{userController.user.password}" />
 					<b:commandButton class="loginbutton" value="Submit"
 						action="#{userController.changePassword}"></b:commandButton>
