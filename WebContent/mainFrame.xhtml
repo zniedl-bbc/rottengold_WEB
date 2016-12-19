@@ -7,6 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="styles/custom/custom.css" />
 	<link rel="stylesheet" type="text/css"
 		href="styles/bootstrap/css/bootstrap.css" />
+	<link rel="icon" type="image/x-icon"
+		href="img/goldbarren.ico" />
 	<f:metadata>
 		<f:viewParam name="id" value="#{commentController.websiteId}"></f:viewParam>
 	</f:metadata>
@@ -14,7 +16,7 @@
 <h:body class="idForBackground">
 	<ui:include src="/header.xhtml" />
 	<ui:include src="/searchMenu.xhtml" />
-	
+
 	<h:panelGroup
 		rendered="#{commentController.idFound and not userController.searchingForAccount}">
 		<ui:include src="/websiteInfo.xhtml" />
