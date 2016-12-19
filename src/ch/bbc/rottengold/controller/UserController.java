@@ -63,7 +63,7 @@ public class UserController implements Serializable {
 	private boolean edditing = false;
 	private boolean searchingForAccount = false;
 	private Comment commentForAccountUserView;
-	private final String PATH = "D:\\Users\\zisler\\Rotten-Gold\\RottenGold_WEB\\WebContent\\img\\profileImg";
+	private final String PATH = "D:\\Users\\zniedl\\Rotten-Gold\\RottenGold_WEB\\WebContent\\img\\profileImg\\";
 
 	@SuppressWarnings("unused")
 	private String profileImgPath;
@@ -290,7 +290,7 @@ public class UserController implements Serializable {
 	public String getProfileImgPathById(int userId) {
 		User userFromId = userBean.getUserById(userId);
 		profileImgPathFromCurrentUser = userFromId.getUsername() + ".png";
-		File f = new File(PATH);
+		File f = new File(PATH + profileImgPathFromCurrentUser);
 		if (!f.exists()) {
 			profileImgPathFromCurrentUser = "default.png";
 		}
